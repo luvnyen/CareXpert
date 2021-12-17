@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
+            android:name=".TnC"
+            android:exported="true" />
+        <activity
+            android:name=".SignUpPage"
+            android:exported="true" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="true" />
+        <activity
+            android:name=".loginpage"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

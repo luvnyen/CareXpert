@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Folder/Semester 5/4_3_PABA/CareXpert/app/src/main/res/drawable-v24/ic_baseline_arrow_back_24.xml" value="0.19282051282051282" />
+        <entry key="..\:/Folder/Semester 5/4_3_PABA/CareXpert/app/src/main/res/layout/activity_login_page.xml" value="0.13518518518518519" />
+        <entry key="..\:/Folder/Semester 5/4_3_PABA/CareXpert/app/src/main/res/layout/activity_main.xml" value="0.125" />
+        <entry key="..\:/Folder/Semester 5/4_3_PABA/CareXpert/app/src/main/res/layout/activity_sign_up_page.xml" value="0.13518518518518519" />
+        <entry key="..\:/Folder/Semester 5/4_3_PABA/CareXpert/app/src/main/res/layout/activity_tn_c.xml" value="0.13518518518518519" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
       </map>
     </option>
