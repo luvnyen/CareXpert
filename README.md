@@ -1,2 +1,2 @@
 # CareXpert
-Android-based application programming course project at Petra Christian University.
+Android-based application programming course final project at Petra Christian University.
