@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="138dp"
+    android:height="177.71dp"
+    android:viewportWidth="138"
+    android:viewportHeight="177.71">
+
+    <path
+        android:fillColor="#abd8dc"
+        android:pathData="M 121.05 40.61 L 55.49 106.15 L 21.84 114.6 L 30.6 81.27 L 96.15 15.73 L 121.05 40.61 Z" />
+    <path
+        android:fillColor="#1fafb5"
+        android:pathData="M 84.96 76.69 L 55.49 106.15 L 21.84 114.6 L 30.6 81.27 L 84.96 76.69 Z" />
+    <path
+        android:fillColor="#26838a"
+        android:pathData="M 94.43 45.91 L 99.76 51.24" />
+    <path
+        android:strokeColor="#f1f2f4"
+        android:strokeWidth="2.61"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round"
+        android:pathData="M 86.3 53.86 L 91.62 59.18" />
+    <path
+        android:strokeColor="#f1f2f4"
+        android:strokeWidth="2.61"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round"
+        android:pathData="M 78.11 62.26 L 83.43 67.58" />
+    <path
+        android:strokeColor="#f1f2f4"
+        android:strokeWidth="2.61"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round"
+        android:pathData="M 67.1 73.26 L 72.42 78.6" />
+    <path
+        android:strokeColor="#f1f2f4"
+        android:strokeWidth="2.61"
+        android:strokeLineJoin="round"
+        android:strokeLineCap="round"
+        android:pathData="M 54.66 85.69 L 59.98 91.02" />
+    <path
+        android:fillColor="#1fafb5"
+        android:pathData="M130.87,41.58a24.24,24.24,0,0,1-17.93,7.12l-2.8,2.82-7,6.92L78.31,33.53,89.38,22.47a24.35,24.35,0,1,1,41.49,19.11Z" />
+    <path
+        android:fillColor="#abd8dc"
+        android:pathData="M28.7,129.27c-0.82-1.18-0.62-0.89-1.39-2C23.8,122.43,21,119,21,119S0,145,0,156.66A21,21,0,0,0,4,169a21.2,21.2,0,0,0,5.54,5.31A20.84,20.84,0,0,0,21,177.71,21.05,21.05,0,0,0,42.1,156.66,21.35,21.35,0,0,0,40.21,149" />
+</vector>

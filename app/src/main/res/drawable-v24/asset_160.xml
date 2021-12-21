@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="148.7dp"
+    android:height="177.69dp"
+    android:viewportWidth="148.7"
+    android:viewportHeight="177.69">
+
+    <path
+        android:fillColor="#abd8dc"
+        android:pathData="M 54.97 0 H 127.49 V 17.64 H 54.97 V 0 Z" />
+    <path
+        android:fillColor="#abd8dc"
+        android:pathData="M 37.76 27.96 H 144.71 V 172.52 H 37.76 V 27.96 Z" />
+    <path
+        android:fillColor="#fff"
+        android:pathData="M 49.99 76.2 H 132.47 V 135.55 H 49.99 V 76.2 Z" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 33.77 17.07 H 148.7 V 34.73 H 33.77 V 17.07 Z" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 56.62 18.2 L 56.62 34.73" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 77.55 18.2 L 77.55 34.73" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 96.99 18.2 L 96.99 34.73" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 119.64 17.64 L 119.64 34.16" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 138.46 17.64 L 138.46 34.16" />
+    <path
+        android:fillColor="#6eafbd"
+        android:pathData="M 110.46 98.78 L 110.46 112.96 L 98.32 112.96 L 98.32 125.09 L 84.15 125.09 L 84.15 112.96 L 72 112.96 L 72 98.78 L 84.15 98.78 L 84.15 86.62 L 98.32 86.62 L 98.32 98.78 L 110.46 98.78 Z" />
+    <path
+        android:fillColor="#f7c8a7"
+        android:pathData="M61.5,165.48c-0.23 0.27 -0.47 0.54 -0.7 0.79 a35,35,0,0,1-53-45.58c0.2-0.24 0.39 -0.47 0.58 -0.68a37.22,37.22,0,0,1,3-3.12A35,35,0,0,1,61.5,165.48Z" />
+    <path
+        android:fillColor="#f7c8a7"
+        android:pathData="M 9.56 118.72 L 58.95 168.12" />
+    <path
+        android:fillColor="#bc967e"
+        android:pathData="M60.8,166.27a34.61,34.61,0,0,1-3.79,3.6L7.82,120.69c0.2-0.24 0.39 -0.47 0.58 -0.68a37.22,37.22,0,0,1,3-3.12Z" />
+</vector>
