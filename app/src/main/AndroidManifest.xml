@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
+            android:name=".profile_edit"
+            android:exported="true" />
+        <activity
             android:name=".profile_main"
             android:exported="true" />
         <activity

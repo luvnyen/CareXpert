@@ -53,6 +53,8 @@ class LoginPage : AppCompatActivity() {
                         _FailedSuccess.setText("Success")
                         _username.setText("")
                         _password.setText("")
+
+//                        val userObj = user(document.data.get("date").toString(), document.data.get("email").toString(),document.data.get("gender").toString(),document.data.get("nama").toString(),document.data.get("password").toString(), document.data.get("username").toString())
                         //Pindah Intent
 
                     }
