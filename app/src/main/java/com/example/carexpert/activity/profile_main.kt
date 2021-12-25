@@ -1,9 +1,10 @@
-package com.example.carexpert
+package com.example.carexpert.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.carexpert.R
 
 class profile_main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

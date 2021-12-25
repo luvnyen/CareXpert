@@ -1,4 +1,4 @@
-package com.example.carexpert
+package com.example.carexpert.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.bold
+import com.example.carexpert.R
+import com.example.carexpert.setTextInputEmptyError
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.math.RoundingMode

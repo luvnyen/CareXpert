@@ -1,4 +1,4 @@
-package com.example.carexpert
+package com.example.carexpert.model
 
 data class user (
     var last_updated : String,

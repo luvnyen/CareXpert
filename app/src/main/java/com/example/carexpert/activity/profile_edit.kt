@@ -1,4 +1,4 @@
-package com.example.carexpert
+package com.example.carexpert.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.carexpert.R
+import com.example.carexpert.setTextInputEmptyError
+import com.example.carexpert.model.user
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore

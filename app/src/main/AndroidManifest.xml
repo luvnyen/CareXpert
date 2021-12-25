@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.carexpert">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
-            android:name=".chat"
+            android:name=".test_API"
             android:exported="true" />
         <activity
-            android:name=".splash_screen"
+            android:name=".activity.chat"
+            android:exported="true" />
+        <activity
+            android:name=".activity.splash_screen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".bmi"
+            android:name=".activity.bmi"
             android:exported="true" />
         <activity
-            android:name=".profile_edit"
+            android:name=".activity.profile_edit"
             android:exported="true" />
         <activity
-            android:name=".profile_main"
+            android:name=".activity.profile_main"
             android:exported="true" />
         <activity
             android:name=".TnC"

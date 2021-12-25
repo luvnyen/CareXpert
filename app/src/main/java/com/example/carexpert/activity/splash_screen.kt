@@ -1,9 +1,11 @@
-package com.example.carexpert
+package com.example.carexpert.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.carexpert.MainActivity
+import com.example.carexpert.R
 
 class splash_screen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +15,7 @@ class splash_screen : AppCompatActivity() {
         val handler = Handler()
 
         handler.postDelayed({
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         },3000)
     }
