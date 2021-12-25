@@ -1,10 +1,10 @@
 package com.example.carexpert
 
 data class user (
-    var date : String,
+    var last_updated : String,
     var email : String,
     var gender : String,
-    var nama : String,
+    var name : String,
     var password : String,
     var username : String
 )
