@@ -12,13 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
-            android:name=".test_API"
+            android:name=".activity.ChatActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.chat"
-            android:exported="true" />
-        <activity
-            android:name=".activity.splash_screen"
+            android:name=".activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,28 +24,43 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.bmi"
+            android:name=".activity.BMIActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.profile_edit"
+            android:name=".activity.ProfileEditActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.profile_main"
+            android:name=".activity.ProfileMainActivity"
             android:exported="true" />
         <activity
-            android:name=".TnC"
+            android:name=".activity.CommentActivity"
             android:exported="true" />
         <activity
-            android:name=".SignUpPage"
+            android:name=".activity.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginPage"
+            android:name=".activity.PostFieldActivity"
             android:exported="true" />
         <activity
-            android:name=".loginpage"
+            android:name=".activity.SearchProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SignInActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ExploreActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.PostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.TnCActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

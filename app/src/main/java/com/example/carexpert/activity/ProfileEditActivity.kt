@@ -11,14 +11,14 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
-import com.example.carexpert.model.user
+import com.example.carexpert.model.User
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-class profile_edit : AppCompatActivity() {
+class ProfileEditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_edit)
@@ -49,11 +49,11 @@ class profile_edit : AppCompatActivity() {
         db.collection("tbUser").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.data.get("username").toString() == "jovian6") {
-                        _edit_FullName.setText(document.data.get("name").toString())
-                        _edit_Email.setText(document.data.get("email").toString())
-                        if (document.data.get("gender").toString() == "Pria") _edit_Gender.setText(items[0], false) else _edit_Gender.setText(items[1], false)
-                        _edit_Password.setText(document.data.get("password").toString())
+                    if (document.data["username"].toString() == "jovian6") {
+                        _edit_FullName.setText(document.data["nama"].toString())
+                        _edit_Email.setText(document.data["email"].toString())
+                        if (document.data["gender"].toString() == "Pria") _edit_Gender.setText(items[0], false) else _edit_Gender.setText(items[1], false)
+                        _edit_Password.setText(document.data["password"].toString())
                     }
                 }
             }
@@ -63,12 +63,12 @@ class profile_edit : AppCompatActivity() {
 
         val _btnBMI = findViewById<ConstraintLayout>(R.id.btnBMI)
         _btnBMI.setOnClickListener {
-            startActivity(Intent(this@profile_edit, bmi::class.java))
+            startActivity(Intent(this@ProfileEditActivity, BMIActivity::class.java))
         }
 
         val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
         _btnChat.setOnClickListener {
-            startActivity(Intent(this@profile_edit, chat::class.java))
+            startActivity(Intent(this@ProfileEditActivity, ChatActivity::class.java))
         }
 
         val _btnUpdateUserData = findViewById<Button>(R.id.btnUpdateUserData)
@@ -83,7 +83,7 @@ class profile_edit : AppCompatActivity() {
                 val formatter = SimpleDateFormat.getDateTimeInstance()
                 val formatedDate = formatter.format(date)
 
-                val userObj = user(formatedDate, _edit_Email.text.toString(), _edit_Gender.text.toString(), _edit_FullName.text.toString(), _edit_Password.text.toString(), "jovian6")
+                val userObj = User(formatedDate, _edit_Email.text.toString(), _edit_Gender.text.toString(), _edit_FullName.text.toString(), _edit_Password.text.toString(), "jovian6")
 
                 // update user data
                 db.collection("tbUser").document(userObj.username)

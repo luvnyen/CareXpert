@@ -1,11 +1,12 @@
-package com.example.carexpert
+package com.example.carexpert.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.carexpert.R
 
-class MainActivity : AppCompatActivity() {
+class ChatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_chat)
     }
 }

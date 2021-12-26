@@ -17,19 +17,19 @@ import com.google.android.material.textfield.TextInputLayout
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class bmi : AppCompatActivity() {
+class BMIActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bmi)
 
         val _btnProfile = findViewById<ConstraintLayout>(R.id.btnProfile)
         _btnProfile.setOnClickListener {
-            startActivity(Intent(this@bmi, profile_edit::class.java))
+            startActivity(Intent(this@BMIActivity, ProfileEditActivity::class.java))
         }
 
         val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
         _btnChat.setOnClickListener {
-            startActivity(Intent(this@bmi, chat::class.java))
+            startActivity(Intent(this@BMIActivity, ChatActivity::class.java))
         }
 
         val _heightLayout = findViewById<TextInputLayout>(R.id.heightLayout)
@@ -44,7 +44,7 @@ class bmi : AppCompatActivity() {
 
         val _btnCalculateBMI = findViewById<Button>(R.id.btnCalculateBMI)
         _btnCalculateBMI.setOnClickListener {
-            if (TextUtils.isEmpty(_edit_Height.getText()) || TextUtils.isEmpty(_edit_Weight.getText())) {
+            if (TextUtils.isEmpty(_edit_Height.text) || TextUtils.isEmpty(_edit_Weight.text)) {
                 setTextInputEmptyError(_edit_Height, _heightLayout, "Height")
                 setTextInputEmptyError(_edit_Weight, _weightLayout, "Weight")
             } else if (_edit_Height.text.toString().toDouble() <= 0 || _edit_Weight.text.toString().toDouble() <= 0) {
@@ -61,15 +61,19 @@ class bmi : AppCompatActivity() {
                 val normalWeightRangeStart = 18.5 * (heightDoubleMeter * heightDoubleMeter)
                 val normalWeightRangeEnd = 24.9 * (heightDoubleMeter * heightDoubleMeter)
 
-                var category = "undefined"
-                if (bmi < 18.5) {
-                    category = "Underweight"
-                } else if (bmi >= 18.5 && bmi <= 24.9) {
-                    category = "Normal"
-                } else if (bmi >= 25.0 && bmi <= 29.9) {
-                    category = "Overweight"
-                } else {
-                    category = "Obese"
+                val category = when {
+                    bmi < 18.5 -> {
+                        "Underweight"
+                    }
+                    bmi in 18.5..24.9 -> {
+                        "Normal"
+                    }
+                    bmi in 25.0..29.9 -> {
+                        "Overweight"
+                    }
+                    else -> {
+                        "Obese"
+                    }
                 }
 
                 val df = DecimalFormat("#.#")
@@ -79,15 +83,15 @@ class bmi : AppCompatActivity() {
                                     .append("BMI: ")
                                     .bold { append(df.format(bmi)) }
 
-                _tvBMI.setVisibility(View.VISIBLE)
-                _tvBMI.setText(formattedBMI)
+                _tvBMI.visibility = View.VISIBLE
+                _tvBMI.text = formattedBMI
 
                 val formattedCategory = SpannableStringBuilder()
                                         .append("Category: ")
                                         .bold { append(category) }
 
-                _tvCategory.setVisibility(View.VISIBLE)
-                _tvCategory.setText(formattedCategory)
+                _tvCategory.visibility = View.VISIBLE
+                _tvCategory.text = formattedCategory
 
                 val formattedWeightRange = SpannableStringBuilder()
                                             .append("For your height, a normal weight range would be from ")
@@ -96,8 +100,8 @@ class bmi : AppCompatActivity() {
                                             .bold { append(df.format(normalWeightRangeEnd)) }
                                             .append(" kilograms.")
 
-                _tvWeightRange.setVisibility(View.VISIBLE)
-                _tvWeightRange.setText(formattedWeightRange)
+                _tvWeightRange.visibility = View.VISIBLE
+                _tvWeightRange.text = formattedWeightRange
             }
         }
     }
