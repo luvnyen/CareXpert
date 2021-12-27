@@ -4,33 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#005C9A"
-    tools:context=".Page_TnC">
+    tools:context=".activity.TnCActivity">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/radius"
-        android:backgroundTint="@color/white"
-        android:layout_margin="32dp"
+        android:background="@drawable/rounded_bg"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:alpha="0.8"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="16dp">
+            android:gravity="center" >
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Terms and Conditions"
-                android:textColor="#000000"
-                android:textSize="30sp"
+                android:textColor="#005C9A"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textAlignment="center"/>
             <TextView
@@ -38,21 +35,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:paddingTop="16dp"
+                android:paddingTop="14dp"
                 android:text="SYARAT DAN KETENTUAN\nPENGGUNAAN\nCAREXPERT"
+                android:textStyle="bold"
                 android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="normal"/>
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo_carexpert" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:paddingTop="15dp"
-                android:text="(Last Update: 23 Januari 2021)"
+                android:text="(Last Updated: December 27, 2021)"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="italic" />
 
             <TextView
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word"
                 android:paddingTop="15dp"
+                android:padding="11dp"
                 android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,"
                 android:textColor="#939393"
                 android:textSize="16sp"
@@ -70,12 +73,11 @@
                 android:id="@+id/BackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/button_background_color"
-                android:textColor="@color/button_text_color"
                 android:layout_gravity="center"
-                android:text="ACCEPT"
-                android:layout_margin = "24dp"
-                android:layout_marginBottom="32dp"/>
+                android:backgroundTint="#005C9A"
+                android:text="I Agree"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp" />
         </LinearLayout>
     </ScrollView>
 

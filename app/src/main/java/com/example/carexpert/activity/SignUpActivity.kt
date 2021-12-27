@@ -59,32 +59,32 @@ class SignUpActivity : AppCompatActivity() {
         _username= findViewById(R.id.username)
 
         //Gender Radio Button
-        _rlaki = findViewById(R.id.rlaki)
-        _rperempuan = findViewById(R.id.rperempuan)
-        _rgroup = findViewById(R.id.rgroup)
-        _rgroup.setOnCheckedChangeListener { _, i ->
-            val rb = findViewById<RadioButton>(i)
-            if (rb != null) {
-                _gender = rb.text.toString()
-            }
-        }
+//        _rlaki = findViewById(R.id.rlaki)
+//        _rperempuan = findViewById(R.id.rperempuan)
+//        _rgroup = findViewById(R.id.rgroup)
+//        _rgroup.setOnCheckedChangeListener { _, i ->
+//            val rb = findViewById<RadioButton>(i)
+//            if (rb != null) {
+//                _gender = rb.text.toString()
+//            }
+//        }
 
         //DateOfBirth Calendar
-        _fromDate = findViewById(R.id.date)
-        _fromDate.setOnClickListener { // calender class's instance and get current date , month and year from calender
-            val c: Calendar = Calendar.getInstance()
-            val mYear: Int = c.get(Calendar.YEAR) // current year
-            val mMonth: Int = c.get(Calendar.MONTH) // current month
-            val mDay: Int = c.get(Calendar.DAY_OF_MONTH) // current day
-            // date picker dialog
-            datePickerDialog = DatePickerDialog(
-                this@SignUpActivity,
-                { _, year, monthOfYear, dayOfMonth -> // set day of month , month and year value in the edit text
-                    _fromDate.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
-                }, mYear, mMonth, mDay
-            )
-            datePickerDialog!!.show()
-        }
+//        _fromDate = findViewById(R.id.date)
+//        _fromDate.setOnClickListener { // calender class's instance and get current date , month and year from calender
+//            val c: Calendar = Calendar.getInstance()
+//            val mYear: Int = c.get(Calendar.YEAR) // current year
+//            val mMonth: Int = c.get(Calendar.MONTH) // current month
+//            val mDay: Int = c.get(Calendar.DAY_OF_MONTH) // current day
+//            // date picker dialog
+//            datePickerDialog = DatePickerDialog(
+//                this@SignUpActivity,
+//                { _, year, monthOfYear, dayOfMonth -> // set day of month , month and year value in the edit text
+//                    _fromDate.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
+//                }, mYear, mMonth, mDay
+//            )
+//            datePickerDialog!!.show()
+//        }
 
         //Button Create Account
         val _SignUpButton = findViewById<TextView>(R.id.SignUpButton)

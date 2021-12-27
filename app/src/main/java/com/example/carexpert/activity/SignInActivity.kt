@@ -4,14 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import com.example.carexpert.R
-import com.example.carexpert.model.User
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class SignInActivity : AppCompatActivity() {
-    private var dataNama : ArrayList<User> = ArrayList()
 
     private lateinit var _username : EditText
     private lateinit var _password : EditText
@@ -21,7 +21,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        //Pindah ke halaman SignUp
+        // pindah ke halaman SignUp
         val _daftar = findViewById<TextView>(R.id.daftar)
         _daftar.setOnClickListener{
             val eIntent = Intent(this@SignInActivity, SignUpActivity::class.java)
@@ -30,38 +30,42 @@ class SignInActivity : AppCompatActivity() {
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
-        //Button Login
-        _username = findViewById<EditText>(R.id.username)
-        _password = findViewById<EditText>(R.id.password)
+        val _usernameLayout = findViewById<TextInputLayout>(R.id.usernameLayout)
+        _username = findViewById(R.id.username)
+
+        val _passwordLayout = findViewById<TextInputLayout>(R.id.passwordLayout)
+        _password = findViewById(R.id.password)
+
+        val _tvWrongCredentials = findViewById<TextView>(R.id.tvWrongCredentials)
+
         val _verifikasi = findViewById<Button>(R.id.verifikasi)
         _verifikasi.setOnClickListener{
-            _verifikasi.isSelected != _verifikasi.isSelected
-            readData(db, _username.text.toString(), _password.text.toString())
+            userSignIn(db, _username.text.toString(), _password.text.toString(), _usernameLayout, _passwordLayout, _tvWrongCredentials, _verifikasi)
         }
     }
 
-    private fun readData(db: FirebaseFirestore, username : String, password: String){
+    private fun userSignIn(db: FirebaseFirestore, username : String, password: String, usernameLayout: TextInputLayout, passwordLayout: TextInputLayout, tvWrongCredentials: TextView, btnSignIn: Button){
+        btnSignIn.text = "Signing In..."
         db.collection("tbUser")
             .get()
             .addOnSuccessListener { result ->
-                dataNama.clear()
-                var found = 0
+                var found = false
                 for (document in result){
                     if (document.data["username"].toString() == username &&
                         document.data["password"].toString() == password){
-                        found = 1
-                        Toast.makeText(applicationContext, "Login Success", Toast.LENGTH_SHORT).show()
-
-                        _password.setText("")
-                        val eIntent = Intent(this@SignInActivity,HomeActivity::class.java).apply {
+                        found = true
+                        val eIntent = Intent(this@SignInActivity, HomeActivity::class.java).apply {
                             putExtra(HomeActivity.username, _username.text.toString())
+                            putExtra("success_login_msg", "Welcome back!")
                         }
                         startActivity(eIntent)
-                        _username.setText("")
                     }
                 }
-                if (found == 0){
-                    Toast.makeText(applicationContext, "Username/Password salah", Toast.LENGTH_SHORT).show()
+                if (!found){
+                    btnSignIn.text = "Sign In"
+                    usernameLayout.error = "Enter a correct username"
+                    passwordLayout.error = "Enter a correct password"
+                    tvWrongCredentials.visibility = View.VISIBLE
                 }
             }
             .addOnFailureListener{
