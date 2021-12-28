@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.SplashScreenActivity">
 
     <ImageView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Made with ❤ by"
+        android:textColor="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
         app:layout_constraintStart_toStartOf="@+id/imageView6" />
@@ -34,6 +36,7 @@
         android:gravity="center"
         android:lineSpacingExtra="3dp"
         android:text="Bryan – Jovian – Calvert"
+        android:textColor="@color/gray"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"

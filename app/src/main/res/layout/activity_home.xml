@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Page_Home">
+    android:background="@color/white"
+    tools:context=".activity.HomeActivity">
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -22,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="40dp">
+            android:paddingBottom="24dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -43,11 +44,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="New post!"
-                    android:letterSpacing="0"
-                    app:icon="@drawable/ic_baseline_drive_file_rename_outline_24"
                     android:backgroundTint="#005C9A"
+                    android:letterSpacing="0"
+                    android:text="New post!"
                     android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:icon="@drawable/ic_baseline_drive_file_rename_outline_24"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView9"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -61,29 +63,33 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="24dp"
                     android:hint="Filter by city"
+                    android:textColorHint="@color/gray"
+                    app:boxStrokeColor="@color/primary"
+                    app:endIconTint="@color/primary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button"
-                    app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+                    app:startIconDrawable="@drawable/ic_baseline_location_city_24"
+                    app:startIconTint="@color/primary">
 
                     <AutoCompleteTextView
                         android:id="@+id/spinner_kota"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="none" />
+                        android:inputType="none"
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lvPost"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintEnd_toEndOf="@+id/kotaLayout"
-                    app:layout_constraintStart_toStartOf="@+id/kotaLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/kotaLayout" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvPost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp" />
 
         </LinearLayout>
     </ScrollView>

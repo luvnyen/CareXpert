@@ -194,6 +194,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:hint="Full Name"
+                android:textColorHint="@color/gray"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_baseline_person_24"
@@ -204,7 +208,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_FullName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -216,6 +222,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:hint="E-mail Address"
+                android:textColorHint="@color/gray"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:startIconDrawable="@drawable/ic_baseline_email_24"
@@ -227,7 +237,8 @@
                     android:id="@+id/edit_Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -241,6 +252,10 @@
                 android:hint="Gender"
                 app:startIconDrawable="@drawable/ic_baseline_female_24"
                 app:errorEnabled="true"
+                android:textColorHint="@color/gray"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/emailLayout">
@@ -249,7 +264,8 @@
                     android:id="@+id/edit_Gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -262,6 +278,10 @@
                 android:layout_marginEnd="8dp"
                 android:hint="Password"
                 app:errorEnabled="true"
+                android:textColorHint="@color/gray"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:endIconMode="password_toggle"
                 app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -272,7 +292,8 @@
                     android:id="@+id/edit_Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -286,6 +307,7 @@
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="#005C9A"
                 android:text="Update Biodata"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

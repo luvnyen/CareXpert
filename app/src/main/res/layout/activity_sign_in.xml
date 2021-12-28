@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F3"
+    android:background="@color/white"
     tools:context=".activity.SignInActivity">
 
     <ImageView
@@ -28,6 +28,10 @@
         android:hint="Enter your username"
         app:endIconMode="clear_text"
         app:errorEnabled="true"
+        android:textColorHint="@color/gray"
+        app:startIconTint="@color/primary"
+        app:boxStrokeColor="@color/primary"
+        app:endIconTint="@color/primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
@@ -36,7 +40,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,6 +54,10 @@
         android:hint="Enter your password"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
+        android:textColorHint="@color/gray"
+        app:startIconTint="@color/primary"
+        app:boxStrokeColor="@color/primary"
+        app:endIconTint="@color/primary"
         app:layout_constraintEnd_toEndOf="@+id/usernameLayout"
         app:layout_constraintStart_toStartOf="@+id/usernameLayout"
         app:layout_constraintTop_toBottomOf="@+id/usernameLayout"
@@ -57,7 +67,8 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,8 +81,6 @@
         android:layout_marginRight="32dp"
         android:orientation="horizontal"
         android:weightSum="3"
-        app:layout_constraintEnd_toEndOf="@+id/LY2"
-        app:layout_constraintStart_toStartOf="@id/LY2"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
 
         <LinearLayout
@@ -88,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/gray"
                 android:text="“One person caring about another represents life's greatest value.”"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -97,6 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:textColor="@color/gray"
                 android:text="Jim Rohn" />
         </LinearLayout>
     </LinearLayout>
@@ -117,6 +128,7 @@
             android:layout_margin="8dp"
             android:text="Don't have an account?"
             android:textSize="14sp"
+            android:textColor="@color/gray"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="645dp" />
 
@@ -141,6 +153,7 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#005C9A"
         android:text="Sign In"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout5"
         app:layout_constraintStart_toStartOf="@+id/linearLayout5"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />

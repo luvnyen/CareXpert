@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.BMIActivity">
 
     <LinearLayout
@@ -192,6 +193,10 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:hint="Height (cm)"
+                android:textColorHint="@color/gray"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -203,7 +208,8 @@
                     android:id="@+id/edit_Height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -215,6 +221,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:hint="Weight (kg)"
+                android:textColorHint="@color/gray"
+                android:textColor="@color/black"
+                app:startIconTint="@color/primary"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -226,7 +237,8 @@
                     android:id="@+id/edit_Weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -239,6 +251,7 @@
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#005C9A"
                 android:text="Calculate BMI"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weightLayout" />

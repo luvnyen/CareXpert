@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Page_Explore">
+    android:background="@color/white"
+    tools:context=".activity.ExploreActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -90,9 +91,8 @@
                     android:layout_height="wrap_content"
                     android:text="See more..."
                     android:textColor="#005C9A"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView15"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView15" />
+                    app:layout_constraintTop_toTopOf="@+id/tvLastUpdated" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -196,26 +196,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Last updated: ___"
+                    android:textColor="@color/gray"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Source: https://covid19.go.id/"
-                    android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/tvLastUpdated" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lvBerita"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lvBerita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="1dp" />
 
         </LinearLayout>
     </ScrollView>

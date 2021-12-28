@@ -73,7 +73,7 @@ class ProfileEditActivity : AppCompatActivity() {
 
         val _btnUpdateUserData = findViewById<Button>(R.id.btnUpdateUserData)
         _btnUpdateUserData.setOnClickListener {
-            if (TextUtils.isEmpty(_edit_FullName.getText()) || TextUtils.isEmpty(_edit_Email.getText()) || TextUtils.isEmpty(_edit_Password.getText())) {
+            if (TextUtils.isEmpty(_edit_FullName.text) || TextUtils.isEmpty(_edit_Email.text) || TextUtils.isEmpty(_edit_Password.text)) {
                 setTextInputEmptyError(_edit_FullName, _fullNameLayout, "Full Name")
                 setTextInputEmptyError(_edit_Email, _emailLayout, "E-mail Address")
                 setTextInputEmptyError(_edit_Password, _passwordLayout, "Password")
