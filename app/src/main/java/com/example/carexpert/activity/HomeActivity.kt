@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
 import com.example.carexpert.adapter.PostAdapter
 import com.example.carexpert.model.Post
+import com.example.carexpert.username_global
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -18,7 +19,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var _lvPost : RecyclerView
     private var arPost = arrayListOf<Post>()
-    private lateinit var _write : ImageView
+    private lateinit var _write : Button
     private lateinit var _spinner : Spinner
     private lateinit var _spinner2 : Spinner
 
@@ -32,17 +33,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        //Terima Intent
-        val _username_akun = intent.getStringExtra(username)
-        _username_simpan = _username_akun.toString()
-
         //Pindah ke halaman Explore
-        val _username_from_login = intent.getStringExtra(username)
+        //val _username_from_login = intent.getStringExtra(username)
         val _explore = findViewById<ImageView>(R.id.explore)
         _explore.setOnClickListener{
-            val eIntent = Intent(this@HomeActivity, ExploreActivity::class.java).apply {
-                putExtra(ExploreActivity.username, _username_from_login)
-            }
+            val eIntent = Intent(this@HomeActivity, ExploreActivity::class.java)
+                //.apply {
+                //putExtra(ExploreActivity.username, _username_from_login)
+            //}
             startActivity(eIntent)
         }
 
@@ -53,13 +51,14 @@ class HomeActivity : AppCompatActivity() {
 
         //Pindah ke halaman Post
         //var _username_from_login = intent.getStringExtra(username)
-//        _write = findViewById(R.id.imageView4)
-//        _write.setOnClickListener{
-//            val eIntent = Intent(this@HomeActivity, PostActivity::class.java).apply {
-//                putExtra(PostActivity.username, _username_from_login.toString())
-//            }
-//            startActivity(eIntent)
-//        }
+        _write = findViewById(R.id.button)
+        _write.setOnClickListener{
+            val eIntent = Intent(this@HomeActivity, PostActivity::class.java)
+                //.apply {
+                //putExtra(PostActivity.username, _username_from_login.toString())
+            //}
+            startActivity(eIntent)
+        }
 
 //        //Filter Spinner 1
 //        _spinner = findViewById(R.id.spinner1)

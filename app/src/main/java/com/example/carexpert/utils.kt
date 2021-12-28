@@ -12,6 +12,25 @@ import org.json.JSONObject
 import org.json.JSONTokener
 import java.text.NumberFormat
 
+var username_global = ""
+var username_other_global = ""
+var date_post_global = ""
+var time_post_global = ""
+
+fun setUsername(username : String){
+    username_global = username
+}
+
+fun setOtherUsername(username_other : String){
+    username_other_global = username_other
+}
+
+fun setPostOther(username_other : String, date_post : String, time_post : String){
+    username_other_global = username_other
+    date_post_global = date_post
+    time_post_global = time_post
+}
+
 fun setTextInputEmptyError(_textInput: TextInputEditText, _textInputLayout: TextInputLayout, attr: String) {
     if (TextUtils.isEmpty(_textInput.getText())) {
         _textInputLayout.error = "$attr cannot be empty"
