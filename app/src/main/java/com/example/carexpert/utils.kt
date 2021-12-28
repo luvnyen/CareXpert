@@ -19,7 +19,7 @@ fun setTextInputEmptyError(_textInput: TextInputEditText, _textInputLayout: Text
 }
 
 fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity, type : String) {
-    //// Instantiate the RequestQueue.
+    // Instantiate the RequestQueue.
     val queue = Volley.newRequestQueue(context)
     val url = "https://data.covid19.go.id/public/api/update.json"
 
@@ -40,7 +40,7 @@ fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity
 
             if (type == "penambahan") {
                 if (key == "tanggal") {
-                    _textView.text = "Last updateds: $myString"
+                    _textView.text = "Last updated: $myString"
                 } else {
                     _textView.text = "+$myString cases"
                 }

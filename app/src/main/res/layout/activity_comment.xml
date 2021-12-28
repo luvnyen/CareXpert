@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Comment Section"
-        android:textColor="#005C9A"
+        android:text="Post Details"
         android:textAlignment="center"
+        android:textColor="#005C9A"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/BackButton3"
@@ -37,7 +37,7 @@
         android:id="@+id/cons2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rounded_bg"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +76,8 @@
             android:layout_marginEnd="8dp"
             android:text="date"
             android:textColor="@color/gray"
-            android:textStyle="italic"
             android:textSize="12sp"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="@+id/time"
             app:layout_constraintEnd_toStartOf="@+id/time" />
 
@@ -174,16 +174,16 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:hint="Write a comment..."
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
+            app:endIconMode="clear_text"
             app:endIconTint="@color/primary"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toStartOf="@+id/send"
             app:layout_constraintStart_toStartOf="@+id/post"
             app:layout_constraintTop_toBottomOf="@+id/date"
-            app:startIconDrawable="@drawable/ic_baseline_comment_24">
+            app:startIconDrawable="@drawable/ic_baseline_comment_24"
+            app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/comment"
@@ -203,17 +203,31 @@
             app:srcCompat="@drawable/ic_baseline_send_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Comments"
+        android:textColor="#005C9A"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/cons2"
+        app:layout_constraintTop_toBottomOf="@+id/cons2" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lvComment"
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cons2"
         app:layout_constraintStart_toStartOf="@+id/cons2"
-        app:layout_constraintTop_toBottomOf="@+id/cons2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

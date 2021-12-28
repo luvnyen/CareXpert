@@ -38,60 +38,27 @@
         android:id="@+id/cons2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3">
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="username"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="time"
-            android:textSize="16sp"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toEndOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="date"
-            android:textSize="16sp"
-            android:textColor="@color/gray"
-            app:layout_constraintStart_toStartOf="@+id/username"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/kotaLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:hint="City"
-            app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/date"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_location_city_24"
+            app:startIconTint="@color/primary">
 
             <AutoCompleteTextView
                 android:id="@+id/spinner_kota"
@@ -108,15 +75,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Province"
-            app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/kotaLayout"
             app:layout_constraintTop_toBottomOf="@+id/kotaLayout"
-            app:startIconDrawable="@drawable/ic_baseline_location_on_24">
+            app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+            app:startIconTint="@color/primary">
 
             <AutoCompleteTextView
                 android:id="@+id/spinner_provinsi"
@@ -134,15 +101,15 @@
             android:layout_height="wrap_content"
             android:hint="Post title"
             android:textColorHint="@color/gray"
-            app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
-            app:endIconTint="@color/primary"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/primary"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
             app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
-            app:startIconDrawable="@drawable/ic_baseline_title_24">
+            app:startIconDrawable="@drawable/ic_baseline_title_24"
+            app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/title_post"
@@ -160,15 +127,15 @@
             android:layout_height="wrap_content"
             android:hint="What's on your mind?"
             android:textColorHint="@color/gray"
-            app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
-            app:endIconTint="@color/primary"
             app:endIconMode="clear_text"
+            app:endIconTint="@color/primary"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/titleLayout"
             app:layout_constraintTop_toBottomOf="@+id/titleLayout"
-            app:startIconDrawable="@drawable/ic_baseline_description_24">
+            app:startIconDrawable="@drawable/ic_baseline_description_24"
+            app:startIconTint="@color/primary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/post"
@@ -176,8 +143,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine"
                 android:lines="3"
-                android:minLines="3"
                 android:maxLines="10"
+                android:minLines="3"
                 android:scrollbars="vertical"
                 android:textColor="@color/black" />
 
