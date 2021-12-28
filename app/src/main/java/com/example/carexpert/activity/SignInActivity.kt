@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.carexpert.R
+import com.example.carexpert.setUsername
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -54,6 +55,7 @@ class SignInActivity : AppCompatActivity() {
                     if (document.data["username"].toString() == username &&
                         document.data["password"].toString() == password){
                         found = true
+                        //setUsername(username)
                         val eIntent = Intent(this@SignInActivity, HomeActivity::class.java).apply {
                             putExtra(HomeActivity.username, _username.text.toString())
                             putExtra("success_login_msg", "Welcome back!")
