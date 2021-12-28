@@ -55,7 +55,7 @@ class SignInActivity : AppCompatActivity() {
                     if (document.data["username"].toString() == username &&
                         document.data["password"].toString() == password){
                         found = true
-                        //setUsername(username)
+                        ////setUsername(username)
                         val eIntent = Intent(this@SignInActivity, HomeActivity::class.java).apply {
                             putExtra(HomeActivity.username, _username.text.toString())
                             putExtra("success_login_msg", "Welcome back!")
