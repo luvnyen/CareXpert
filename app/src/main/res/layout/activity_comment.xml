@@ -177,7 +177,6 @@
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -189,7 +188,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

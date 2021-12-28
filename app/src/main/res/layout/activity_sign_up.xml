@@ -48,7 +48,6 @@
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -60,7 +59,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +75,6 @@
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -86,7 +86,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/namalengkap"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +101,6 @@
             app:endIconMode="clear_text"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -112,7 +113,8 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -124,7 +126,6 @@
             android:hint="Gender"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -137,7 +138,8 @@
                 android:id="@+id/gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,7 +152,6 @@
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -163,7 +164,8 @@
                 android:id="@+id/Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +178,6 @@
             app:endIconMode="password_toggle"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -189,7 +190,8 @@
                 android:id="@+id/ConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

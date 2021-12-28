@@ -195,7 +195,6 @@
                 android:layout_marginEnd="8dp"
                 android:hint="Full Name"
                 android:textColorHint="@color/gray"
-                android:textColor="@color/black"
                 app:startIconTint="@color/primary"
                 app:boxStrokeColor="@color/primary"
                 app:endIconTint="@color/primary"
@@ -209,7 +208,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_FullName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,7 +223,6 @@
                 android:layout_marginEnd="8dp"
                 android:hint="E-mail Address"
                 android:textColorHint="@color/gray"
-                android:textColor="@color/black"
                 app:startIconTint="@color/primary"
                 app:boxStrokeColor="@color/primary"
                 app:endIconTint="@color/primary"
@@ -237,7 +237,8 @@
                     android:id="@+id/edit_Email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -252,7 +253,6 @@
                 app:startIconDrawable="@drawable/ic_baseline_female_24"
                 app:errorEnabled="true"
                 android:textColorHint="@color/gray"
-                android:textColor="@color/black"
                 app:startIconTint="@color/primary"
                 app:boxStrokeColor="@color/primary"
                 app:endIconTint="@color/primary"
@@ -264,7 +264,8 @@
                     android:id="@+id/edit_Gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -278,7 +279,6 @@
                 android:hint="Password"
                 app:errorEnabled="true"
                 android:textColorHint="@color/gray"
-                android:textColor="@color/black"
                 app:startIconTint="@color/primary"
                 app:boxStrokeColor="@color/primary"
                 app:endIconTint="@color/primary"
@@ -292,7 +292,8 @@
                     android:id="@+id/edit_Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

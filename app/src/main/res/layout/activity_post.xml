@@ -85,7 +85,6 @@
             android:hint="City"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -98,7 +97,8 @@
                 android:id="@+id/spinner_kota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,7 +110,6 @@
             android:hint="Province"
             app:errorEnabled="true"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -123,7 +122,8 @@
                 android:id="@+id/spinner_provinsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,7 +134,6 @@
             android:layout_height="wrap_content"
             android:hint="Post title"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -148,7 +147,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/title_post"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +160,6 @@
             android:layout_height="wrap_content"
             android:hint="What's on your mind?"
             android:textColorHint="@color/gray"
-            android:textColor="@color/black"
             app:startIconTint="@color/primary"
             app:boxStrokeColor="@color/primary"
             app:endIconTint="@color/primary"
@@ -178,7 +178,8 @@
                 android:lines="3"
                 android:minLines="3"
                 android:maxLines="10"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

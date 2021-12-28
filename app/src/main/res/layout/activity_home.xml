@@ -64,7 +64,6 @@
                     android:layout_marginEnd="24dp"
                     android:hint="Filter by city"
                     android:textColorHint="@color/gray"
-                    android:textColor="@color/black"
                     app:startIconTint="@color/primary"
                     app:boxStrokeColor="@color/primary"
                     app:endIconTint="@color/primary"
@@ -77,7 +76,8 @@
                         android:id="@+id/spinner_kota"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="none" />
+                        android:inputType="none"
+                        android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

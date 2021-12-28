@@ -29,7 +29,6 @@
         app:endIconMode="clear_text"
         app:errorEnabled="true"
         android:textColorHint="@color/gray"
-        android:textColor="@color/primary"
         app:startIconTint="@color/primary"
         app:boxStrokeColor="@color/primary"
         app:endIconTint="@color/primary"
@@ -41,7 +40,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +55,6 @@
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
         android:textColorHint="@color/gray"
-        android:textColor="@color/black"
         app:startIconTint="@color/primary"
         app:boxStrokeColor="@color/primary"
         app:endIconTint="@color/primary"
@@ -67,7 +67,8 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,8 +81,6 @@
         android:layout_marginRight="32dp"
         android:orientation="horizontal"
         android:weightSum="3"
-        app:layout_constraintEnd_toEndOf="@+id/LY2"
-        app:layout_constraintStart_toStartOf="@id/LY2"
         app:layout_constraintTop_toBottomOf="@+id/passwordLayout">
 
         <LinearLayout
