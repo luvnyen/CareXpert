@@ -6,49 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".Page_Explore">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/searchUsernameLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:hint="Search by username"
-        app:endIconMode="clear_text"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toStartOf="@+id/SearchButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_person_search_24">
+        android:background="#005C9A" >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchUsernameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:hint="Search by username"
+            android:textColorHint="@color/white"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/SearchButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/ic_baseline_person_search_24"
+            app:startIconTint="@color/white"
+            app:boxStrokeColor="@color/white"
+            app:endIconTint="@color/white" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white" />
 
-    <ImageView
-        android:id="@+id/SearchButton"
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchUsernameLayout"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/SearchButton"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/searchUsernameLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchUsernameLayout"
+            app:srcCompat="@drawable/ic_baseline_search_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toTopOf="@id/bottomnav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchUsernameLayout">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,9 +124,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="total_cases"
-                            android:textStyle="bold"
-                            android:textSize="24sp"
                             android:textColor="#D2854F"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@+id/textView19"
                             app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -146,9 +161,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="total_cases"
-                            android:textStyle="bold"
-                            android:textSize="24sp"
                             android:textColor="#d9326f"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@+id/textView17"
                             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 

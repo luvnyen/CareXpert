@@ -28,16 +28,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+            <TextView
+                android:id="@+id/tvSignOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="Sign Out"
+                android:textColor="#e02d3f"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView9"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView8"
-                app:srcCompat="@drawable/vert_modified" />
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
 
             <TextView
                 android:id="@+id/textView9"
