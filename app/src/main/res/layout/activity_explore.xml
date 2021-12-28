@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Page_Explore">
+    android:background="@color/white"
+    tools:context=".activity.ExploreActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -196,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="Last updated: ___"
+                    android:textColor="@color/gray"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="@+id/linearLayout"
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -206,6 +208,7 @@
                     android:layout_height="wrap_content"
                     android:text="Source: https://covid19.go.id/"
                     android:textStyle="italic"
+                    android:textColor="@color/gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tvLastUpdated" />
 
@@ -214,6 +217,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="1dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView20" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
