@@ -40,7 +40,7 @@ fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity
 
             if (type == "penambahan") {
                 if (key == "tanggal") {
-                    _textView.text = "Last updated: $myString"
+                    _textView.text = "Last updateds: $myString"
                 } else {
                     _textView.text = "+$myString cases"
                 }
