@@ -7,12 +7,15 @@ import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
 import com.example.carexpert.adapter.NewsAdapter
+import com.example.carexpert.getCovidDataAPI
 import com.example.carexpert.model.News
 import com.google.firebase.firestore.FirebaseFirestore
+import org.w3c.dom.Text
 
 class ExploreActivity : AppCompatActivity() {
 
@@ -63,6 +66,21 @@ class ExploreActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        val _tvConfirmedCases = findViewById<TextView>(R.id.tvConfirmedCases)
+        getCovidDataAPI("jumlah_positif",_tvConfirmedCases, this,"total")
+
+        val _tvAdditionConfirmedCases = findViewById<TextView>(R.id.tvAdditionConfirmedCases)
+        getCovidDataAPI("jumlah_positif",_tvAdditionConfirmedCases, this,"penambahan")
+
+        val _tvDeathCases = findViewById<TextView>(R.id.tvDeathCases)
+        getCovidDataAPI("jumlah_meninggal",_tvDeathCases, this,"total")
+
+        val _tvAdditionDeathCases = findViewById<TextView>(R.id.tvAdditionDeathCases)
+        getCovidDataAPI("jumlah_meninggal",_tvAdditionDeathCases, this,"penambahan")
+
+        val _tvLastUpdated = findViewById<TextView>(R.id.tvLastUpdated)
+        getCovidDataAPI("tanggal",_tvLastUpdated, this,"penambahan")
 
         //Read Berita
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()

@@ -53,73 +53,73 @@ class HomeActivity : AppCompatActivity() {
 
         //Pindah ke halaman Post
         //var _username_from_login = intent.getStringExtra(username)
-        _write = findViewById<ImageView>(R.id.imageView4)
-        _write.setOnClickListener{
-            val eIntent = Intent(this@HomeActivity, PostActivity::class.java).apply {
-                putExtra(PostActivity.username, _username_from_login.toString())
-            }
-            startActivity(eIntent)
-        }
+//        _write = findViewById(R.id.imageView4)
+//        _write.setOnClickListener{
+//            val eIntent = Intent(this@HomeActivity, PostActivity::class.java).apply {
+//                putExtra(PostActivity.username, _username_from_login.toString())
+//            }
+//            startActivity(eIntent)
+//        }
 
-        //Filter Spinner 1
-        _spinner = findViewById(R.id.spinner1)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.type,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            _spinner.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.type,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            _spinner.adapter = adapter
-        }
-        _spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                parent.getItemAtPosition(position)
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        })
-
-        //Filter Spinner 2
-        _spinner2 = findViewById(R.id.spinner2)
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.type,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            _spinner2.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.type,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            _spinner2.adapter = adapter
-        }
-        _spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                parent.getItemAtPosition(position)
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        })
+//        //Filter Spinner 1
+//        _spinner = findViewById(R.id.spinner1)
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.type,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            _spinner.adapter = adapter
+//        }
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.type,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            _spinner.adapter = adapter
+//        }
+//        _spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>,
+//                view: View,
+//                position: Int,
+//                id: Long
+//            ) {
+//                parent.getItemAtPosition(position)
+//            }
+//            override fun onNothingSelected(parent: AdapterView<*>?) {}
+//        })
+//
+//        //Filter Spinner 2
+//        _spinner2 = findViewById(R.id.spinner2)
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.type,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            _spinner2.adapter = adapter
+//        }
+//        ArrayAdapter.createFromResource(
+//            this,
+//            R.array.type,
+//            android.R.layout.simple_spinner_item
+//        ).also { adapter ->
+//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//            _spinner2.adapter = adapter
+//        }
+//        _spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>,
+//                view: View,
+//                position: Int,
+//                id: Long
+//            ) {
+//                parent.getItemAtPosition(position)
+//            }
+//            override fun onNothingSelected(parent: AdapterView<*>?) {}
+//        })
 
     }
 

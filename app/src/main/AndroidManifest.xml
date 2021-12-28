@@ -30,7 +30,7 @@
             android:name=".activity.ProfileEditActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.ProfileMainActivity"
+            android:name=".activity.ProfilePostActivity"
             android:exported="true" />
         <activity
             android:name=".activity.CommentActivity"

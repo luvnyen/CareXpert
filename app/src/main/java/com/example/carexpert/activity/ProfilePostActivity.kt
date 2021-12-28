@@ -6,24 +6,24 @@ import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.carexpert.R
 
-class ProfileMainActivity : AppCompatActivity() {
+class ProfilePostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_main)
+        setContentView(R.layout.activity_profile_post)
 
         val _btnProfile = findViewById<ConstraintLayout>(R.id.btnProfile)
         _btnProfile.setOnClickListener {
-            startActivity(Intent(this@ProfileMainActivity, ProfileEditActivity::class.java))
+            startActivity(Intent(this@ProfilePostActivity, ProfileEditActivity::class.java))
         }
 
         val _btnBMI = findViewById<ConstraintLayout>(R.id.btnBMI)
         _btnBMI.setOnClickListener {
-            startActivity(Intent(this@ProfileMainActivity, BMIActivity::class.java))
+            startActivity(Intent(this@ProfilePostActivity, BMIActivity::class.java))
         }
 
         val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
         _btnChat.setOnClickListener {
-            startActivity(Intent(this@ProfileMainActivity, ChatActivity::class.java))
+            startActivity(Intent(this@ProfilePostActivity, ChatActivity::class.java))
         }
     }
 }
