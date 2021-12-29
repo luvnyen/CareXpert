@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.carexpert.*
+import com.example.carexpert.R
 import com.example.carexpert.adapter.CommentAdapter
 import com.example.carexpert.model.Comment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,11 +33,17 @@ class CommentActivity : AppCompatActivity() {
     private var arComment = arrayListOf<Comment>()
     private lateinit var _lvComment : RecyclerView
 
+    lateinit var _username_simpan : String
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_comment)
+
+        //Terima Intent
+        val _username_akun = intent.getStringExtra(HomeActivity.username)
+        _username_simpan = _username_akun.toString()
 
         _username = findViewById(R.id.username)
         _date = findViewById(R.id.date)
@@ -47,22 +53,31 @@ class CommentActivity : AppCompatActivity() {
         _title_post = findViewById(R.id.title_post)
         _post = findViewById(R.id.post)
 
+        //Terima Intent
+        //val _username_akun = intent.getStringExtra(username)
+        val _username_post = intent.getStringExtra(username_post)
+        val _date_post = intent.getStringExtra(date_post)
+        val _time_post = intent.getStringExtra(time_post)
+
         //Username di klik ke Search Profile
         _username.setOnClickListener {
-            val eIntent = Intent(this@CommentActivity, SearchProfileActivity::class.java)
-            setOtherUsername(_username.text.toString())
+            val eIntent = Intent(this@CommentActivity, SearchProfileActivity::class.java).apply {
+                putExtra(SearchProfileActivity.username, _username_akun)
+                putExtra(SearchProfileActivity.username_other, _username.text.toString())
+            }
             startActivity(eIntent)
         }
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
         //Cari Post
-        readData_Post(db, username_other_global, date_post_global,
-            time_post_global)
+        readData_Post(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
 
         //Pindah ke halaman Home
         val _ImageView6 = findViewById<ImageView>(R.id.BackButton3)
         _ImageView6.setOnClickListener{
-            val eIntent = Intent(this@CommentActivity, HomeActivity::class.java)
+            val eIntent = Intent(this@CommentActivity, HomeActivity::class.java).apply {
+                putExtra(HomeActivity.username, _username_akun)
+            }
             startActivity(eIntent)
         }
 
@@ -77,21 +92,17 @@ class CommentActivity : AppCompatActivity() {
             val formatted_date = current.format(formatter_date)
             val formatted_time = current.format(formatter_time)
             TambahComment(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
-                username_global, _comment.text.toString(), formatted_date.toString(),
+                _username_simpan, _comment.text.toString(), formatted_date.toString(),
                 formatted_time.toString())
 
             //Refresh Comment Lists
             _lvComment = findViewById(R.id.lvComment)
-            readData_Comments(db, username_other_global, date_post_global,
-                time_post_global)
-            //readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
+            readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
         }
 
         //Refresh Comment Lists
         _lvComment = findViewById(R.id.lvComment)
-        readData_Comments(db, username_other_global, date_post_global,
-            time_post_global)
-        //readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
+        readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
 
     }
 
@@ -125,10 +136,16 @@ class CommentActivity : AppCompatActivity() {
                     override fun onItemClicked(data:Comment){
                         //GetData(db, data)
                         val eIntent = Intent(this@CommentActivity, SearchProfileActivity::class.java)
-                        setOtherUsername(data.username_comment)
+                            .apply {
+                                //Kirim Username Akun
+                                putExtra(SearchProfileActivity.username, _username_simpan)
+                                //Kirim dari Comment
+                                putExtra(SearchProfileActivity.username_other, data.username_comment)
+                            }
                         startActivity(eIntent)
                     }
                 })
+
 
             }
             .addOnFailureListener{
@@ -171,10 +188,20 @@ class CommentActivity : AppCompatActivity() {
                         _post.text = document.data["post"].toString()
                     }
                 }
+//                if (found == 0){
+//
+//                }
             }
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())
             }
+    }
+
+    companion object {
+        const val username = "username"
+        const val username_post = "username_post"
+        const val date_post = "date_post"
+        const val time_post = "time_post"
     }
 }
 

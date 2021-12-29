@@ -32,9 +32,6 @@ class PostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
-        _username = findViewById(R.id.editTextTextPersonName3)
-        _username.text = username_global
-
         //Pindah ke halaman SignIn
         //val _username_from_login = intent.getStringExtra(username)
         //val _ImageView6 = findViewById<ImageView>(R.id.BackButton2)

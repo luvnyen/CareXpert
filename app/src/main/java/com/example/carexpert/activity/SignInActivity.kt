@@ -55,7 +55,7 @@ class SignInActivity : AppCompatActivity() {
                                 found = true
                                 setUsername(_username.text.toString())
                                 val eIntent = Intent(this@SignInActivity, HomeActivity::class.java).apply {
-                                    setUsername(_username.text.toString())
+                                    putExtra(HomeActivity.username, _username.text.toString())
                                     putExtra("success_login_msg", "Welcome back!")
                                 }
                                 startActivity(eIntent)
