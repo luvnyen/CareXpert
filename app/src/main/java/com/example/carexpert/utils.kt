@@ -42,7 +42,7 @@ fun setTextInputEmptyError(_textInput: TextInputEditText, _textInputLayout: Text
 
 fun setAutoCompleteTextViewEmptyError(_textInput: AutoCompleteTextView, _textInputLayout: TextInputLayout, attr: String) {
     if (TextUtils.isEmpty(_textInput.getText())) {
-        _textInputLayout.error = "$attr cannot be emptys"
+        _textInputLayout.error = "$attr cannot be emptyss"
     } else {
         _textInputLayout.error = ""
     }
