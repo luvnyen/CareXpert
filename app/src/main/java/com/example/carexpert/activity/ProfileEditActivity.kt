@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
 import com.example.carexpert.model.User
+import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -49,7 +50,7 @@ class ProfileEditActivity : AppCompatActivity() {
         db.collection("tbUser").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.data["username"].toString() == "jovian6") {
+                    if (document.data["username"].toString() == username_global) {
                         _edit_FullName.setText(document.data["nama"].toString())
                         _edit_Email.setText(document.data["email"].toString())
                         if (document.data["gender"].toString() == "Pria") _edit_Gender.setText(items[0], false) else _edit_Gender.setText(items[1], false)

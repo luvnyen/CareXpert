@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
 import com.example.carexpert.adapter.PostAdapter
 import com.example.carexpert.model.Post
+import com.example.carexpert.setPostOther
 import com.example.carexpert.username_global
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -25,9 +26,6 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var _username_simpan : String
 
-    companion object {
-        const val username = "username"
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -54,9 +52,13 @@ class HomeActivity : AppCompatActivity() {
         _write = findViewById(R.id.button)
         _write.setOnClickListener{
             val eIntent = Intent(this@HomeActivity, PostActivity::class.java)
-                //.apply {
-                //putExtra(PostActivity.username, _username_from_login.toString())
-            //}
+            startActivity(eIntent)
+        }
+
+        //Pindah Halaman Profile
+        val _profile : ImageView = findViewById(R.id.profile)
+        _profile.setOnClickListener{
+            val eIntent = Intent(this@HomeActivity, ProfilePostActivity::class.java)
             startActivity(eIntent)
         }
 
@@ -147,14 +149,7 @@ class HomeActivity : AppCompatActivity() {
                     override fun onItemClicked(data:Post){
                         //GetData(db, data)
                         val eIntent = Intent(this@HomeActivity, CommentActivity::class.java)
-                            .apply {
-                                //Kirim Username Akun
-                                putExtra(CommentActivity.username, _username_simpan)
-                                //Kirim dari Post
-                                putExtra(CommentActivity.username_post, data.username)
-                                putExtra(CommentActivity.date_post, data.date)
-                                putExtra(CommentActivity.time_post, data.time)
-                            }
+                        setPostOther(data.username, data.date, data.time)
                         startActivity(eIntent)
                     }
                 })
