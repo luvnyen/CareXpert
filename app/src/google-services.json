@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "176208338514",
+    "project_id": "proyek-carexpert",
+    "storage_bucket": "proyek-carexpert.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176208338514:android:4682e8735a6ad6ae31498b",
+        "android_client_info": {
+          "package_name": "com.example.carexpert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176208338514-heo6mv4f2c2b26l8lja9t0uoe2j25csp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiC6Tofoh2zq5bXwsrnQ72EgASc9j3JzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176208338514-heo6mv4f2c2b26l8lja9t0uoe2j25csp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176208338514:android:9c6697a063f4485f31498b",
+        "android_client_info": {
+          "package_name": "com.example.proyek_design"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176208338514-heo6mv4f2c2b26l8lja9t0uoe2j25csp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiC6Tofoh2zq5bXwsrnQ72EgASc9j3JzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176208338514-heo6mv4f2c2b26l8lja9t0uoe2j25csp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
