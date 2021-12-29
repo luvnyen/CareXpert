@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
 import com.example.carexpert.adapter.PostAdapter
 import com.example.carexpert.model.Post
+import com.example.carexpert.setPostOther
 import com.example.carexpert.username_global
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -147,14 +148,7 @@ class HomeActivity : AppCompatActivity() {
                     override fun onItemClicked(data:Post){
                         //GetData(db, data)
                         val eIntent = Intent(this@HomeActivity, CommentActivity::class.java)
-                            .apply {
-                                //Kirim Username Akun
-                                putExtra(CommentActivity.username, _username_simpan)
-                                //Kirim dari Post
-                                putExtra(CommentActivity.username_post, data.username)
-                                putExtra(CommentActivity.date_post, data.date)
-                                putExtra(CommentActivity.time_post, data.time)
-                            }
+                        setPostOther(data.username, data.date, data.time)
                         startActivity(eIntent)
                     }
                 })
