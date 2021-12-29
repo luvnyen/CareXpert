@@ -5,10 +5,15 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.*
 import com.example.carexpert.R
 import com.example.carexpert.model.User
+import com.example.carexpert.setAutoCompleteTextViewEmptyError
+import com.example.carexpert.setTextInputEmptyError
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
@@ -16,20 +21,14 @@ import kotlin.collections.ArrayList
 class SignUpActivity : AppCompatActivity() {
     private var dataNama : ArrayList<User> = ArrayList()
 
-    private lateinit var _nama : EditText
-    private var _gender = ""
-    private lateinit var _email : EditText
-    private lateinit var _password : EditText
-    private lateinit var _username : EditText
+    private lateinit var _nama : TextInputEditText
+    private lateinit var _gender : AutoCompleteTextView
+    private lateinit var _email : TextInputEditText
+    private lateinit var _password : TextInputEditText
+    private lateinit var _confirmPassword : TextInputEditText
+    private lateinit var _username : TextInputEditText
     private lateinit var _FailedSuccess : TextView
-
-
-    private lateinit var _rlaki : RadioButton
-    private lateinit var _rperempuan : RadioButton
-    private lateinit var _rgroup : RadioGroup
-    private lateinit var _fromDate : EditText
-
-    private var datePickerDialog: DatePickerDialog? = null
+    private lateinit var _fromDate : TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar?.hide()
@@ -37,14 +36,14 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
 
-        //Pindah ke halaman TnC
+        // pindah ke halaman TnC
         val _TnCText = findViewById<TextView>(R.id.TnCText)
         _TnCText.setOnClickListener{
             val eIntent = Intent(this@SignUpActivity, TnCActivity::class.java)
             startActivity(eIntent)
         }
 
-        //Pindah ke halaman SignIn
+        // pindah ke halaman SignIn
         val _ImageView6 = findViewById<ImageView>(R.id.imageView6)
         _ImageView6.setOnClickListener{
             val eIntent = Intent(this@SignUpActivity, SignInActivity::class.java)
@@ -56,43 +55,89 @@ class SignUpActivity : AppCompatActivity() {
         _nama = findViewById(R.id.namalengkap)
         _email = findViewById(R.id.email)
         _password = findViewById(R.id.Password)
+        _confirmPassword = findViewById(R.id.ConfirmPassword)
+        _gender = findViewById(R.id.gender)
         _username= findViewById(R.id.username)
 
-        //Gender Radio Button
-//        _rlaki = findViewById(R.id.rlaki)
-//        _rperempuan = findViewById(R.id.rperempuan)
-//        _rgroup = findViewById(R.id.rgroup)
-//        _rgroup.setOnCheckedChangeListener { _, i ->
-//            val rb = findViewById<RadioButton>(i)
-//            if (rb != null) {
-//                _gender = rb.text.toString()
-//            }
-//        }
+        val usernameLayout = findViewById<TextInputLayout>(R.id.usernameLayout)
+        val namalengkapLayout = findViewById<TextInputLayout>(R.id.namalengkapLayout)
+        val emailLayout = findViewById<TextInputLayout>(R.id.emailLayout)
+        val genderLayout = findViewById<TextInputLayout>(R.id.genderLayout)
+        val passwordLayout = findViewById<TextInputLayout>(R.id.passwordLayout)
+        val confirmPasswordLayout = findViewById<TextInputLayout>(R.id.confirmPasswordLayout)
 
-        //DateOfBirth Calendar
-//        _fromDate = findViewById(R.id.date)
-//        _fromDate.setOnClickListener { // calender class's instance and get current date , month and year from calender
-//            val c: Calendar = Calendar.getInstance()
-//            val mYear: Int = c.get(Calendar.YEAR) // current year
-//            val mMonth: Int = c.get(Calendar.MONTH) // current month
-//            val mDay: Int = c.get(Calendar.DAY_OF_MONTH) // current day
-//            // date picker dialog
-//            datePickerDialog = DatePickerDialog(
-//                this@SignUpActivity,
-//                { _, year, monthOfYear, dayOfMonth -> // set day of month , month and year value in the edit text
-//                    _fromDate.setText(dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + year)
-//                }, mYear, mMonth, mDay
-//            )
-//            datePickerDialog!!.show()
-//        }
+        // dropdown menu list of items
+        val items = listOf("Pria", "Wanita")
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            items
+        )
+        _gender.setAdapter(adapter)
 
         //Button Create Account
         val _SignUpButton = findViewById<TextView>(R.id.SignUpButton)
-        _SignUpButton.setOnClickListener{
-            readData(db, _nama.text.toString(), _username.text.toString(),_gender, _fromDate.text.toString(), //4
-                _email.text.toString(), _password.text.toString())
-            val eIntent = Intent(this@SignUpActivity, SignInActivity::class.java)
-            startActivity(eIntent)
+        _SignUpButton.setOnClickListener {
+            setTextInputEmptyError(_username, usernameLayout, "Username")
+            setTextInputEmptyError(_password, passwordLayout, "Password")
+            setTextInputEmptyError(_confirmPassword, confirmPasswordLayout, "Confirm Password")
+            setAutoCompleteTextViewEmptyError(_gender, genderLayout, "Gender")
+            setTextInputEmptyError(_nama, namalengkapLayout, "Full Name")
+            setTextInputEmptyError(_email, emailLayout, "E-mail Address")
+
+            var isPasswordDouble = false
+
+            if (_password.text.toString() != _confirmPassword.text.toString() && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text)) {
+                isPasswordDouble = true
+                passwordLayout.error = "Password did not match"
+                confirmPasswordLayout.error = "Password did not match"
+            }
+
+            var foundUsernameDouble = false
+            var foundEmailAddressDouble = false
+
+            db.collection("tbUser")
+                .get()
+                .addOnSuccessListener { result ->
+                    dataNama.clear()
+                    for (document in result) {
+                        if (document.data["email"].toString() == _email.text.toString() || document.data["username"].toString() == _username.text.toString()){
+                            if (!TextUtils.isEmpty(_email.text)) {
+                                if (document.data["email"].toString() == _email.text.toString()) {
+                                    foundEmailAddressDouble = true
+                                    emailLayout.error = "E-mail Address has already been taken"
+                                }
+                            }
+
+                            if (!TextUtils.isEmpty(_username.text)) {
+                                if (document.data["username"].toString() == _username.text.toString()) {
+                                    foundUsernameDouble = true
+                                    usernameLayout.error = "Username has already been taken"
+                                }
+                            }
+                        }
+                    }
+
+                    if (!foundUsernameDouble) {
+                        usernameLayout.error = ""
+                    }
+
+                    if (!foundEmailAddressDouble) {
+                        emailLayout.error = ""
+                    }
+
+                    if (!TextUtils.isEmpty(_username.text) && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text) && !TextUtils.isEmpty(_gender.text) && !TextUtils.isEmpty(_nama.text) && !TextUtils.isEmpty(_email.text)) {
+                        if (!foundEmailAddressDouble && !foundUsernameDouble && !isPasswordDouble) {
+                            Toast.makeText(applicationContext, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
+//                            TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), "test", _email.text.toString(), _password.text.toString())
+//                    val eIntent = Intent(this@SignUpActivity, SignInActivity::class.java)
+//                    startActivity(eIntent)
+                        }
+                    }
+                }
+                .addOnFailureListener{
+                    Log.d("Firebase", it.message.toString())
+                }
         }
     }
 
@@ -107,29 +152,6 @@ class SignUpActivity : AppCompatActivity() {
                 _password.setText("")
                 _fromDate.setText("")
                 Log.d("Firebase", "Simpan Data Berhasil")
-            }
-            .addOnFailureListener{
-                Log.d("Firebase", it.message.toString())
-            }
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun readData(db: FirebaseFirestore, nama: String, username: String, gender: String, date: String, email: String, password: String){
-        db.collection("tbUser")
-            .get()
-            .addOnSuccessListener { result ->
-                dataNama.clear()
-                var found = 0
-                for (document in result){
-                    if (document.data["email"].toString() == email || document.data["username"].toString() == email){
-                        found = 1
-                        _FailedSuccess.text = "Username / Email telah dipakai"
-                    }
-                }
-                if (found == 0){
-                    Toast.makeText(applicationContext, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                    TambahData(db, nama, username, gender, date, email, password)
-                }
             }
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())

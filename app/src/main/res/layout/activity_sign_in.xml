@@ -51,17 +51,18 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Enter your password"
-        app:endIconMode="password_toggle"
-        app:errorEnabled="true"
         android:textColorHint="@color/gray"
-        app:startIconTint="@color/primary"
         app:boxStrokeColor="@color/primary"
+        app:endIconMode="password_toggle"
         app:endIconTint="@color/primary"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="@+id/usernameLayout"
         app:layout_constraintStart_toStartOf="@+id/usernameLayout"
         app:layout_constraintTop_toBottomOf="@+id/usernameLayout"
-        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24">
+        app:startIconDrawable="@drawable/ic_baseline_vpn_key_24"
+        app:startIconTint="@color/primary">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"

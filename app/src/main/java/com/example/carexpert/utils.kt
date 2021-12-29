@@ -1,6 +1,7 @@
 package com.example.carexpert
 
 import android.text.TextUtils
+import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -34,6 +35,16 @@ fun setPostOther(username_other : String, date_post : String, time_post : String
 fun setTextInputEmptyError(_textInput: TextInputEditText, _textInputLayout: TextInputLayout, attr: String) {
     if (TextUtils.isEmpty(_textInput.getText())) {
         _textInputLayout.error = "$attr cannot be empty"
+    } else {
+        _textInputLayout.error = ""
+    }
+}
+
+fun setAutoCompleteTextViewEmptyError(_textInput: AutoCompleteTextView, _textInputLayout: TextInputLayout, attr: String) {
+    if (TextUtils.isEmpty(_textInput.getText())) {
+        _textInputLayout.error = "$attr cannot be empty"
+    } else {
+        _textInputLayout.error = ""
     }
 }
 

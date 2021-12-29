@@ -4,13 +4,18 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.carexpert.R
 import com.example.carexpert.model.Post
+import com.example.carexpert.setAutoCompleteTextViewEmptyError
+import com.example.carexpert.setTextInputEmptyError
 import com.example.carexpert.username_global
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -18,35 +23,35 @@ import java.time.format.DateTimeFormatter
 class PostActivity : AppCompatActivity() {
     private var dataPost : ArrayList<Post> = ArrayList()
 
-    private lateinit var _username : TextView
-    private lateinit var _date : TextView
-    private lateinit var _time : TextView
-    private lateinit var _spinnerKota : Spinner
-    private lateinit var _spinnerProvinsi : Spinner
-    private lateinit var _title : EditText
-    private lateinit var _post : EditText
+//    private lateinit var _date : TextView
+//    private lateinit var _time : TextView
 
-    //@RequiresApi(Build.VERSION_CODES.O)
+    private lateinit var _spinnerKota: AutoCompleteTextView
+    private lateinit var _kotaLayout: TextInputLayout
+
+    private lateinit var _spinnerProvinsi: AutoCompleteTextView
+    private lateinit var _provinsiLayout: TextInputLayout
+
+    private lateinit var _title_post: TextInputEditText
+    private lateinit var _titleLayout: TextInputLayout
+
+    private lateinit var _post: TextInputEditText
+    private lateinit var _postLayout: TextInputLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         this.getSupportActionBar()?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post)
 
-        //Pindah ke halaman SignIn
-        //val _username_from_login = intent.getStringExtra(username)
-        //val _ImageView6 = findViewById<ImageView>(R.id.BackButton2)
-        //_ImageView6.setOnClickListener{
-        //    val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
-                //.apply {
-                //putExtra(HomeActivity.username, _username_from_login)
-            //}
-            //startActivity(eIntent)
-        //}
+        val _backButton = findViewById<ImageView>(R.id.BackButton2)
+        _backButton.setOnClickListener{
+            startActivity(Intent(this@PostActivity, HomeActivity::class.java))
+        }
 
-        //Get username
-        //var _username_from_login = intent.getStringExtra(username)
-        //_username = findViewById(R.id.username)
-        //_username.text = username_global
+        // Get username
+//        var _username_from_login = intent.getStringExtra(username)
+//        _username = findViewById(R.id.username)
+//        _username.text = username_global
 
 
 //        //Get Date and Time Post
@@ -61,7 +66,7 @@ class PostActivity : AppCompatActivity() {
 //        _time.setText(formatted_time)
 //
 //        //Spinner Kota
-//        _spinnerKota = findViewById(R.id.spinner_kota)
+        _spinnerKota = findViewById(R.id.spinner_kota)
 //        _spinnerKota.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
 //            override fun onItemSelected(
 //                parent: AdapterView<*>,
@@ -84,7 +89,7 @@ class PostActivity : AppCompatActivity() {
 //        }
 //
 //        //Spinner Provinsi
-//        _spinnerProvinsi = findViewById(R.id.spinner_provinsi)
+        _spinnerProvinsi = findViewById(R.id.spinner_provinsi)
 //        _spinnerProvinsi.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
 //            override fun onItemSelected(
 //                parent: AdapterView<*>,
@@ -106,24 +111,35 @@ class PostActivity : AppCompatActivity() {
 //            _spinnerProvinsi.adapter = adapter
 //        }
 //
-//        //Get Title and Post
-//        _title = findViewById(R.id.title_post)
-//        _post = findViewById(R.id.post)
-//
-//        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
-//
-//        //Button Post
-//        val _btnPost : Button = findViewById(R.id.BtnPost)
-//        _btnPost.setOnClickListener {
-//            _btnPost.isSelected != _btnPost.isSelected
-//            TambahData(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
+
+        _kotaLayout = findViewById(R.id.kotaLayout)
+        _provinsiLayout = findViewById(R.id.provinsiLayout)
+
+        _title_post = findViewById(R.id.title_post)
+        _titleLayout = findViewById(R.id.titleLayout)
+
+        _post = findViewById(R.id.post)
+        _postLayout = findViewById(R.id.postLayout)
+
+        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val _btnPost : Button = findViewById(R.id.BtnPost)
+        _btnPost.setOnClickListener {
+            if (TextUtils.isEmpty(_spinnerKota.text) || TextUtils.isEmpty(_spinnerProvinsi.text) || TextUtils.isEmpty(_title_post.text) || TextUtils.isEmpty(_post.text)) {
+                setAutoCompleteTextViewEmptyError(_spinnerKota, _kotaLayout, "City")
+                setAutoCompleteTextViewEmptyError(_spinnerProvinsi, _provinsiLayout, "Province")
+                setTextInputEmptyError(_title_post, _titleLayout, "Post Title")
+                setTextInputEmptyError(_post, _postLayout, "Post Description")
+            } else {
+                //            TambahData(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
 //                _spinnerKota.getSelectedItem().toString(),
 //                _spinnerProvinsi.getSelectedItem().toString(),
 //                _title.text.toString(), _post.text.toString())
-//
+
 //                val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
 //                startActivity(eIntent)
-//        }
+            }
+        }
     }
 
 //    private fun TambahData(db: FirebaseFirestore, username : String, date : String, time : String, Kota : String,

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
@@ -14,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
 import com.example.carexpert.adapter.CommentAdapter
 import com.example.carexpert.model.Comment
+import com.example.carexpert.setAutoCompleteTextViewEmptyError
+import com.example.carexpert.setTextInputEmptyError
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -28,7 +33,9 @@ class CommentActivity : AppCompatActivity() {
     private lateinit var _post : TextView
 
     private lateinit var _send : ImageView
-    private lateinit var _comment : EditText
+
+    private lateinit var _comment : TextInputEditText
+    private lateinit var _commentLayout : TextInputLayout
 
     private var arComment = arrayListOf<Comment>()
     private lateinit var _lvComment : RecyclerView
@@ -84,20 +91,25 @@ class CommentActivity : AppCompatActivity() {
         //Kirim Komen
         _send = findViewById(R.id.send)
         _comment = findViewById(R.id.comment)
-        _send.setOnClickListener{
-            //date and time upload
-            val current = LocalDateTime.now()
-            val formatter_date = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-            val formatter_time = DateTimeFormatter.ofPattern("HH:mm:ss")
-            val formatted_date = current.format(formatter_date)
-            val formatted_time = current.format(formatter_time)
-            TambahComment(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
-                _username_simpan, _comment.text.toString(), formatted_date.toString(),
-                formatted_time.toString())
+        _commentLayout = findViewById(R.id.commentLayout)
+        _send.setOnClickListener {
+            if (TextUtils.isEmpty(_comment.text)) {
+                setTextInputEmptyError(_comment, _commentLayout, "Comment")
+            } else {
+                //date and time upload
+                val current = LocalDateTime.now()
+                val formatter_date = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+                val formatter_time = DateTimeFormatter.ofPattern("HH:mm:ss")
+                val formatted_date = current.format(formatter_date)
+                val formatted_time = current.format(formatter_time)
+                TambahComment(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
+                    _username_simpan, _comment.text.toString(), formatted_date.toString(),
+                    formatted_time.toString())
 
-            //Refresh Comment Lists
-            _lvComment = findViewById(R.id.lvComment)
-            readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
+                //Refresh Comment Lists
+                _lvComment = findViewById(R.id.lvComment)
+                readData_Comments(db, _username_post.toString(), _date_post.toString(), _time_post.toString())
+            }
         }
 
         //Refresh Comment Lists
