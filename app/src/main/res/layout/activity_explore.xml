@@ -38,7 +38,9 @@
                 android:id="@+id/search_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:imeOptions="actionSend"
+                android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

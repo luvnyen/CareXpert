@@ -9,6 +9,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import org.json.JSONArray
 import org.json.JSONObject
 import org.json.JSONTokener
 import java.text.NumberFormat
@@ -48,6 +49,8 @@ fun setAutoCompleteTextViewEmptyError(_textInput: AutoCompleteTextView, _textInp
     }
 }
 
+fun String.capitalizeWords(): String = split(" ").map { it.toLowerCase().capitalize() }.joinToString(" ")
+
 fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity, type : String) {
     // Instantiate the RequestQueue.
     val queue = Volley.newRequestQueue(context)
@@ -79,6 +82,68 @@ fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity
             }
         },
         { _textView.text = "ERROR" })
+
+    // Add the request to the RequestQueue.
+    queue.add(stringRequest)
+}
+
+fun getProvinceDataAPI(items: MutableList<String>, context: AppCompatActivity) {
+    // Instantiate the RequestQueue.
+    val queue = Volley.newRequestQueue(context)
+    val url = "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
+
+    // Request a string response from the provided URL.
+    val stringRequest = StringRequest(
+        Request.Method.GET, url,
+        { response ->
+            val arr = JSONTokener(response).nextValue() as JSONArray
+            for (i in 0 until arr.length()) {
+                val update = arr.get(i) as JSONObject
+                items.add(update["name"].toString().capitalizeWords())
+            }
+        },
+        { items += "error" })
+
+    // Add the request to the RequestQueue.
+    queue.add(stringRequest)
+}
+
+fun getCityDataAPI(province : String, items: MutableList<String>, context: AppCompatActivity) {
+    // Instantiate the RequestQueue.
+    val url = "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
+
+    // Request a string response from the provided URL.
+    val stringRequest = StringRequest(
+        Request.Method.GET, url,
+        { response ->
+            val arr = JSONTokener(response).nextValue() as JSONArray
+            for (i in 0 until arr.length()) {
+                val update = arr.get(i) as JSONObject
+                if (update["name"].toString().capitalizeWords() == province){
+                    items.add(i.toString())
+                //getCityDataAPI_(items, 11, context)
+                }
+            }
+        },
+        {  })
+}
+
+fun getCityDataAPI_(items: MutableList<String>, index : Int, context: AppCompatActivity) {
+    // Instantiate the RequestQueue.
+    val queue = Volley.newRequestQueue(context)
+    val url = "https://www.emsifa.com/api-wilayah-indonesia/api/regencies/"+index.toString()+".json"
+
+    // Request a string response from the provided URL.
+    val stringRequest = StringRequest(
+        Request.Method.GET, url,
+        { response ->
+            val arr = JSONTokener(response).nextValue() as JSONArray
+            for (i in 0 until arr.length()) {
+                val update = arr.get(i) as JSONObject
+                items.add(update["name"].toString().capitalizeWords())
+            }
+        },
+        { items += "error" })
 
     // Add the request to the RequestQueue.
     queue.add(stringRequest)

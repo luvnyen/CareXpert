@@ -13,6 +13,7 @@ import com.example.carexpert.setUsername
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
+import org.w3c.dom.Text
 
 
 class SignInActivity : AppCompatActivity() {
