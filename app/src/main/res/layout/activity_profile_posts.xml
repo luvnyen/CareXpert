@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.ProfilePostsActivity">
 
     <LinearLayout
@@ -186,6 +187,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="You have currently made no posts yet"
+            android:visibility="gone"
             android:textColor="@color/gray" />
 
         <ScrollView
