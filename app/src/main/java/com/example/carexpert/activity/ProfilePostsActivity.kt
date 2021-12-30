@@ -28,6 +28,16 @@ class ProfilePostsActivity : AppCompatActivity() {
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
+        val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
+        _exploreIcon.setOnClickListener {
+            startActivity(Intent(this@ProfilePostsActivity, ExploreActivity::class.java))
+        }
+
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        _homeIcon.setOnClickListener {
+            startActivity(Intent(this@ProfilePostsActivity, HomeActivity::class.java))
+        }
+
         // get user data
         db.collection("tbUser").get()
             .addOnSuccessListener { result ->

@@ -27,13 +27,23 @@ class ProfileEditActivity : AppCompatActivity() {
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
+        val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
+        _exploreIcon.setOnClickListener {
+            startActivity(Intent(this@ProfileEditActivity, ExploreActivity::class.java))
+        }
+
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        _homeIcon.setOnClickListener {
+            startActivity(Intent(this@ProfileEditActivity, HomeActivity::class.java))
+        }
+
         val _btnBMI = findViewById<ConstraintLayout>(R.id.btnBMI)
         _btnBMI.setOnClickListener {
             startActivity(Intent(this@ProfileEditActivity, BMIActivity::class.java))
         }
 
-        val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
-        _btnChat.setOnClickListener {
+        val _btnPosts = findViewById<ConstraintLayout>(R.id.btnChat)
+        _btnPosts.setOnClickListener {
             startActivity(Intent(this@ProfileEditActivity, ProfilePostsActivity::class.java))
         }
 
