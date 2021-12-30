@@ -32,7 +32,7 @@ class ProfileEditActivity : AppCompatActivity() {
             startActivity(Intent(this@ProfileEditActivity, ExploreActivity::class.java))
         }
 
-        val _homeIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.homeIcon)
         _homeIcon.setOnClickListener {
             startActivity(Intent(this@ProfileEditActivity, HomeActivity::class.java))
         }

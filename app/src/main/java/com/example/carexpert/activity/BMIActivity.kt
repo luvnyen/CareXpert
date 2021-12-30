@@ -34,7 +34,7 @@ class BMIActivity : AppCompatActivity() {
             startActivity(Intent(this@BMIActivity, ExploreActivity::class.java))
         }
 
-        val _homeIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.homeIcon)
         _homeIcon.setOnClickListener {
             startActivity(Intent(this@BMIActivity, HomeActivity::class.java))
         }
