@@ -87,84 +87,12 @@ class PostActivity : AppCompatActivity() {
             _spinner_kota.setAdapter(adapter_kota)
         }
 
-//        _spinner_provinsi.setOnClickListener {
-//            if (!TextUtils.isEmpty(_spinner_provinsi.getText())){
-//                getCityDataAPI(_spinner_provinsi.text.toString())
-//                var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
-//                val items_kota: MutableList<String> = mutableListOf()
-//                getCityDataAPI_(items_kota, this)
-//                val adapter_kota = ArrayAdapter(
-//                    this,
-//                    android.R.layout.simple_spinner_dropdown_item,
-//                    items_kota
-//                )
-//                _spinner_kota.setAdapter(adapter_kota)
-//            }
-//        }
-
-        // Get username
-//        var _username_from_login = intent.getStringExtra(username)
-//        _username = findViewById(R.id.username)
-//        _username.text = username_global
-
-
-//        //Get Date and Time Post
-//        val current = LocalDateTime.now()
-//        val formatter_date = DateTimeFormatter.ofPattern("dd/MM/yyyy")
-//        val formatter_time = DateTimeFormatter.ofPattern("HH:mm:ss")
-//        val formatted_date = current.format(formatter_date)
-//        val formatted_time = current.format(formatter_time)
-//        _date = findViewById(R.id.date)
-//        _date.setText(formatted_date)
-//        _time = findViewById(R.id.time)
-//        _time.setText(formatted_time)
-//
-//        //Spinner Kota
-        _spinnerKota = findViewById(R.id.spinner_kota)
-//        _spinnerKota.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View,
-//                position: Int,
-//                id: Long
-//            ) {
-//                parent.getItemAtPosition(position)
-//            }
-//            override fun onNothingSelected(parent: AdapterView<*>?) {}
-//        })
-//
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.kota,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinnerKota.adapter = adapter
-//        }
-//
-//        //Spinner Provinsi
-        _spinnerProvinsi = findViewById(R.id.spinner_provinsi)
-//        _spinnerProvinsi.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View,
-//                position: Int,
-//                id: Long
-//            ) {
-//                parent.getItemAtPosition(position)
-//            }
-//            override fun onNothingSelected(parent: AdapterView<*>?) {}
-//        })
-//
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.Provinsi,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinnerProvinsi.adapter = adapter
-//        }
-//
+        //Get Date and Time Post
+        val current = LocalDateTime.now()
+        val formatter_date = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val formatter_time = DateTimeFormatter.ofPattern("HH:mm:ss")
+        val formatted_date = current.format(formatter_date)
+        val formatted_time = current.format(formatter_time)
 
         _kotaLayout = findViewById(R.id.kotaLayout)
         _provinsiLayout = findViewById(R.id.provinsiLayout)
@@ -179,59 +107,60 @@ class PostActivity : AppCompatActivity() {
 
         val _btnPost : Button = findViewById(R.id.BtnPost)
         _btnPost.setOnClickListener {
-            if (TextUtils.isEmpty(_spinnerKota.text) || TextUtils.isEmpty(_spinnerProvinsi.text) || TextUtils.isEmpty(_title_post.text) || TextUtils.isEmpty(_post.text)) {
-                setAutoCompleteTextViewEmptyError(_spinnerKota, _kotaLayout, "City")
-                setAutoCompleteTextViewEmptyError(_spinnerProvinsi, _provinsiLayout, "Province")
-                setTextInputEmptyError(_title_post, _titleLayout, "Post Title")
-                setTextInputEmptyError(_post, _postLayout, "Post Description")
-            } else {
-                //            TambahData(db, _username.text.toString(), _date.text.toString(), _time.text.toString(),
-//                _spinnerKota.getSelectedItem().toString(),
-//                _spinnerProvinsi.getSelectedItem().toString(),
-//                _title.text.toString(), _post.text.toString())
+            TambahData(db, username_global, formatted_date, formatted_time,
+                _spinner_kota.text.toString(), _spinner_provinsi.text.toString(),
+                _title_post.text.toString(), _post.text.toString())
 
-//                val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
-//                startActivity(eIntent)
-            }
+            val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
+            startActivity(eIntent)
+
+//            if (TextUtils.isEmpty(_spinnerKota.text) || TextUtils.isEmpty(_spinnerProvinsi.text) || TextUtils.isEmpty(_title_post.text) || TextUtils.isEmpty(_post.text)) {
+//                setAutoCompleteTextViewEmptyError(_spinnerKota, _kotaLayout, "City")
+//                setAutoCompleteTextViewEmptyError(_spinnerProvinsi, _provinsiLayout, "Province")
+//                setTextInputEmptyError(_title_post, _titleLayout, "Post Title")
+//                setTextInputEmptyError(_post, _postLayout, "Post Description")
+//            } else {
+//
+//
+
+//            }
         }
     }
 
-//    private fun TambahData(db: FirebaseFirestore, username : String, date : String, time : String, Kota : String,
-//                           Provinsi : String, Expired : String, Post : String){
-//        val namaBaru = Post(username, date, time, Kota, Provinsi, Expired, Post)
-//        db.collection("tbPost")
-//            .add(namaBaru)
-//            .addOnSuccessListener {
-//                _title.setText("")
-//                _post.setText("")
-//                readData(db)
-//                Log.d("Firebase", "Simpan Data Berhasil")
-//            }
-//            .addOnFailureListener{
-//                Log.d("Firebase", it.message.toString())
-//            }
-//    }
-//
-//    private fun readData(db: FirebaseFirestore){
-//        db.collection("tbPost")
-//            .get()
-//            .addOnSuccessListener { result ->
-//                dataPost.clear()
-//                for (document in result){
-//                    val namaBaru = Post(
-//                        document.data["username"].toString(),
-//                        document.data["date"].toString(),
-//                        document.data["time"].toString(),
-//                        document.data["kota"].toString(),
-//                        document.data["provinsi"].toString(),
-//                        document.data["title"].toString(),
-//                        document.data["post"].toString())
-//                    dataPost.add(namaBaru)
-//                }
-//                //lvAdapter.notifyDataSetChanged()
-//            }
-//            .addOnFailureListener{
-//                Log.d("Firebase", it.message.toString())
-//            }
-//    }
+    private fun TambahData(db: FirebaseFirestore, username : String, date : String, time : String, Kota : String,
+                           Provinsi : String, Expired : String, Post : String){
+        val namaBaru = Post(username, date, time, Kota, Provinsi, Expired, Post)
+        db.collection("tbPost")
+            .add(namaBaru)
+            .addOnSuccessListener {
+                readData(db)
+                Log.d("Firebase", "Simpan Data Berhasil")
+            }
+            .addOnFailureListener{
+                Log.d("Firebase", it.message.toString())
+            }
+    }
+
+    private fun readData(db: FirebaseFirestore){
+        db.collection("tbPost")
+            .get()
+            .addOnSuccessListener { result ->
+                dataPost.clear()
+                for (document in result){
+                    val namaBaru = Post(
+                        document.data["username"].toString(),
+                        document.data["date"].toString(),
+                        document.data["time"].toString(),
+                        document.data["kota"].toString(),
+                        document.data["provinsi"].toString(),
+                        document.data["title"].toString(),
+                        document.data["post"].toString())
+                    dataPost.add(namaBaru)
+                }
+                //lvAdapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener{
+                Log.d("Firebase", it.message.toString())
+            }
+    }
 }
