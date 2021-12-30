@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
+            android:name=".activity.covid19_data"
+            android:exported="false" />
+        <activity
             android:name=".activity.ChatActivity"
             android:exported="true" />
         <activity
@@ -37,9 +40,6 @@
             android:exported="true" />
         <activity
             android:name=".activity.HomeActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.PostFieldActivity"
             android:exported="true" />
         <activity
             android:name=".activity.SearchProfileActivity"

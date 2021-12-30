@@ -32,6 +32,7 @@ class PostAdapter (
         var _judul : TextView = itemView.findViewById(R.id.title_post)
         var _post : TextView = itemView.findViewById(R.id.post)
         var _commentIcon : ImageView = itemView.findViewById(R.id.commentIcon)
+        var _commentText : TextView = itemView.findViewById(R.id.tvCommentText)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -52,6 +53,10 @@ class PostAdapter (
         holder._post.text = post.post
 
         holder._commentIcon.setOnClickListener {
+            onItemClickCallback.onItemClicked(listPost[position])
+        }
+
+        holder._commentText.setOnClickListener {
             onItemClickCallback.onItemClicked(listPost[position])
         }
     }

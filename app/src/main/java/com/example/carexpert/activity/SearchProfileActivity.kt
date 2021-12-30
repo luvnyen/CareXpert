@@ -57,7 +57,13 @@ class SearchProfileActivity : AppCompatActivity() {
                 for (document in result){
                     if (document.data["username"].toString() == username){
                         found = 1
-                        _namalengkap.setText(document.data["nama"].toString())
+                        _namalengkap.text = document.data["nama"].toString()
+
+                        val _tvMadeByUsername = findViewById<TextView>(R.id.tvMadeByUsername)
+                        _tvMadeByUsername.text = "Post made by ${document.data["nama"].toString()}"
+
+                        val _tvUserSince = findViewById<TextView>(R.id.tvUserSince)
+                        _tvUserSince.text = "User since ${document.data["date"].toString()}"
                     }
                 }
                 if (found == 0){

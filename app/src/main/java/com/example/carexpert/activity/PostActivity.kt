@@ -51,8 +51,7 @@ class PostActivity : AppCompatActivity() {
             startActivity(Intent(this@PostActivity, HomeActivity::class.java))
         }
 
-        //Spinner Province
-        var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
+        val _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
         val items_province: MutableList<String> = mutableListOf()
         getProvinceDataAPI(items_province, this)
         val adapter_province = ArrayAdapter(
@@ -62,10 +61,12 @@ class PostActivity : AppCompatActivity() {
         )
         _spinner_provinsi.setAdapter(adapter_province)
 
-        //Spinner Kota
-        var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
-        _spinner_provinsi.setOnItemClickListener(OnItemClickListener { arg0, arg1, arg2, arg3 ->
-            val index: Int = items_province.indexOf(_spinner_provinsi.getText().toString())
+        val _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+        _spinner_kota.isEnabled = false;
+        _spinner_kota.isClickable = false;
+
+        _spinner_provinsi.setOnItemClickListener { _, _, _, _ ->
+            val index: Int = items_province.indexOf(_spinner_provinsi.text.toString())
             i_global = index
 
             _spinner_kota.setText("")
@@ -79,9 +80,12 @@ class PostActivity : AppCompatActivity() {
                 items_kota
             )
             adapter_kota.notifyDataSetChanged()
-            _spinner_kota.setAdapter(adapter_kota)
 
-        })
+            _spinner_kota.isEnabled = true;
+            _spinner_kota.isClickable = true;
+            _kotaLayout.hint = "City"
+            _spinner_kota.setAdapter(adapter_kota)
+        }
 
 //        _spinner_provinsi.setOnClickListener {
 //            if (!TextUtils.isEmpty(_spinner_provinsi.getText())){

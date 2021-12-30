@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.*
 import com.example.carexpert.adapter.PostAdapter
 import com.example.carexpert.model.Post
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -19,10 +20,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var _lvPost : RecyclerView
     private var arPost = arrayListOf<Post>()
     private lateinit var _write : Button
-    private lateinit var _spinner : Spinner
-    private lateinit var _spinner2 : Spinner
-
-    lateinit var _username_simpan : String
 
     companion object {
         const val username = "username"
@@ -51,7 +48,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(eIntent)
         }
 
-        //Spinner Province
         var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
         val items_province: MutableList<String> = mutableListOf()
         getProvinceDataAPI(items_province, this)
@@ -62,10 +58,12 @@ class HomeActivity : AppCompatActivity() {
         )
         _spinner_provinsi.setAdapter(adapter_province)
 
-        //Spinner Kota
         var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+        val _kotaLayout = findViewById<TextInputLayout>(R.id.kotaLayout)
+        _spinner_kota.isEnabled = false;
+        _spinner_kota.isClickable = false;
 
-        _spinner_provinsi.setOnItemClickListener(AdapterView.OnItemClickListener { arg0, arg1, arg2, arg3 ->
+        _spinner_provinsi.setOnItemClickListener { _, _, _, _ ->
             val index: Int = items_province.indexOf(_spinner_provinsi.getText().toString())
             i_global = index
 
@@ -78,13 +76,15 @@ class HomeActivity : AppCompatActivity() {
                 android.R.layout.simple_spinner_dropdown_item,
                 items_kota
             )
+            _spinner_kota.isEnabled = true;
+            _spinner_kota.isClickable = true;
+            _kotaLayout.hint = "City"
             adapter_kota.notifyDataSetChanged()
             _spinner_kota.setAdapter(adapter_kota)
-
-        })
+        }
 
         //Spinner Kota Item Selected (Read Posts by Filter Province n City)
-        _spinner_kota.setOnItemClickListener(AdapterView.OnItemClickListener { arg0, arg1, arg2, arg3 ->
+        _spinner_kota.setOnItemClickListener({ _, _, _, _ ->
 
         })
 

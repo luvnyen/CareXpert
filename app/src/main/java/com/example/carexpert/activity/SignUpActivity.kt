@@ -118,20 +118,36 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     }
 
-                    if (!foundUsernameDouble) {
-                        usernameLayout.error = ""
+                    if (!TextUtils.isEmpty(_username.text)) {
+                        if (!foundUsernameDouble) {
+                            usernameLayout.error = ""
+                        }
+                        if (_username.text.toString().contains(" ")) {
+                            usernameLayout.error = "Username cannot contain spaces"
+                        } else {
+                            usernameLayout.error = ""
+                        }
                     }
 
-                    if (!foundEmailAddressDouble) {
+                    if (!TextUtils.isEmpty(_password.text)) {
+                        if (_password.text.toString().length < 6) {
+                            passwordLayout.error = "Password should be minimum 6 characters"
+                        } else {
+                            passwordLayout.error = ""
+                        }
+                    }
+
+
+                    if (!foundEmailAddressDouble && !TextUtils.isEmpty(_email.text)) {
                         emailLayout.error = ""
                     }
 
                     if (!TextUtils.isEmpty(_username.text) && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text) && !TextUtils.isEmpty(_gender.text) && !TextUtils.isEmpty(_nama.text) && !TextUtils.isEmpty(_email.text)) {
                         if (!foundEmailAddressDouble && !foundUsernameDouble && !isPasswordDouble) {
                             Toast.makeText(applicationContext, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-//                            TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), "test", _email.text.toString(), _password.text.toString())
-//                    val eIntent = Intent(this@SignUpActivity, SignInActivity::class.java)
-//                    startActivity(eIntent)
+                            TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), "test", _email.text.toString(), _password.text.toString())
+                    val eIntent = Intent(this@SignUpActivity, HomeActivity::class.java)
+                    startActivity(eIntent)
                         }
                     }
                 }

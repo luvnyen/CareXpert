@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.widget.EditText
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -93,6 +93,10 @@ class CommentActivity : AppCompatActivity() {
                 _lvComment = findViewById(R.id.lvComment)
                 readData_Comments(db, username_other_global,
                     date_post_global, time_post_global)
+
+                val _tvNoComment = findViewById<TextView>(R.id.tvNoComment)
+                _tvNoComment.visibility = View.GONE
+
             }
         }
 
@@ -124,6 +128,12 @@ class CommentActivity : AppCompatActivity() {
                         arComment.add(PostBaru)
                     }
                 }
+
+                val _tvNoComment = findViewById<TextView>(R.id.tvNoComment)
+                if (arComment.isEmpty()) {
+                    _tvNoComment.visibility = View.VISIBLE
+                }
+
                 _lvComment.layoutManager = LinearLayoutManager(this)
                 val commentAdapter = CommentAdapter(arComment)
                 _lvComment.adapter = commentAdapter
