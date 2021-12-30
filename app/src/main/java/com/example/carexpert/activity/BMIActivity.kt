@@ -135,7 +135,7 @@ class BMIActivity : AppCompatActivity() {
             editor.putString("spUsername", username_global)
             editor.apply()
 
-            startActivity(Intent(this@BMIActivity, SignInActivity::class.java))
+            startActivity(Intent(this@BMIActivity, SplashScreenActivity::class.java))
         }
     }
 }

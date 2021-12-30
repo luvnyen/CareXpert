@@ -69,7 +69,7 @@ class CommentActivity : AppCompatActivity() {
         _ImageView6.setOnClickListener{
             //val eIntent = Intent(this@CommentActivity, HomeActivity::class.java)
             //startActivity(eIntent)
-            super.onBackPressed()
+                super.onBackPressed()
         }
 
         //Kirim Komen

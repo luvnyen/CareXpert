@@ -9,13 +9,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottomnav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -77,7 +82,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/btnProfile"
@@ -164,139 +169,151 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_bg">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteY="67dp">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Adult BMI Calculator"
-                android:textColor="#005C9A"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:orientation="vertical" >
 
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/heightLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:hint="Height (cm)"
-                android:textColorHint="@color/gray"
-                app:boxStrokeColor="@color/primary"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/primary"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:startIconDrawable="@drawable/ic_baseline_height_24"
-                app:startIconTint="@color/primary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_Height"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textColor="@color/black" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_bg">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Adult BMI Calculator"
+                        android:textColor="#005C9A"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/weightLayout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:hint="Weight (kg)"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray"
-                app:boxStrokeColor="@color/primary"
-                app:endIconMode="clear_text"
-                app:endIconTint="@color/primary"
-                app:errorEnabled="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/heightLayout"
-                app:startIconDrawable="@drawable/ic_baseline_balance_24"
-                app:startIconTint="@color/primary">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edit_Weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:textColor="@color/black" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/heightLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Height (cm)"
+                        android:textColorHint="@color/gray"
+                        app:boxStrokeColor="@color/primary"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/primary"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7"
+                        app:startIconDrawable="@drawable/ic_baseline_height_24"
+                        app:startIconTint="@color/primary">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_Height"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/black" />
 
-            <Button
-                android:id="@+id/btnCalculateBMI"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="#005C9A"
-                android:text="Calculate BMI"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/tvBMI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="BMI: ___"
-                android:textColor="#005C9A"
-                android:textSize="17sp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/btnCalculateBMI"
-                app:layout_constraintTop_toBottomOf="@+id/btnCalculateBMI" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/weightLayout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Weight (kg)"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        app:boxStrokeColor="@color/primary"
+                        app:endIconMode="clear_text"
+                        app:endIconTint="@color/primary"
+                        app:errorEnabled="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/heightLayout"
+                        app:startIconDrawable="@drawable/ic_baseline_balance_24"
+                        app:startIconTint="@color/primary">
 
-            <TextView
-                android:id="@+id/tvCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Category: ___"
-                android:textColor="#005C9A"
-                android:textSize="17sp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/tvBMI"
-                app:layout_constraintTop_toBottomOf="@+id/tvBMI" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_Weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/black" />
 
-            <TextView
-                android:id="@+id/tvWeightRange"
-                android:layout_width="330dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="For your height, a normal weight range would be from _ to _ kilograms."
-                android:textColor="#005C9A"
-                android:textSize="17sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvCategory"
-                app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/btnCalculateBMI"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="#005C9A"
+                        android:text="Calculate BMI"
+                        android:textColor="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+
+                    <TextView
+                        android:id="@+id/tvBMI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="BMI: ___"
+                        android:textColor="#005C9A"
+                        android:textSize="17sp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/btnCalculateBMI"
+                        app:layout_constraintTop_toBottomOf="@+id/btnCalculateBMI" />
+
+                    <TextView
+                        android:id="@+id/tvCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Category: ___"
+                        android:textColor="#005C9A"
+                        android:textSize="17sp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/tvBMI"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBMI" />
+
+                    <TextView
+                        android:id="@+id/tvWeightRange"
+                        android:layout_width="330dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="For your height, a normal weight range would be from _ to _ kilograms."
+                        android:textColor="#005C9A"
+                        android:textSize="17sp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tvCategory"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

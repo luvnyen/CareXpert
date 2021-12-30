@@ -130,7 +130,7 @@ class ProfileEditActivity : AppCompatActivity() {
             editor.putString("spUsername", username_global)
             editor.apply()
 
-            startActivity(Intent(this@ProfileEditActivity, SignInActivity::class.java))
+            startActivity(Intent(this@ProfileEditActivity, SplashScreenActivity::class.java))
         }
     }
 }
