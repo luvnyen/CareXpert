@@ -90,15 +90,27 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/tvResetFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Reset filter"
+            android:visibility="gone"
+            android:textColor="@color/primary"
+            app:layout_constraintEnd_toEndOf="@+id/kotaLayout"
+            app:layout_constraintTop_toBottomOf="@+id/kotaLayout" />
+
+        <TextView
             android:id="@+id/tvNoPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="There are currently no post in the selected area..."
+            android:textColor="@color/gray"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/kotaLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/tvResetFilter" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

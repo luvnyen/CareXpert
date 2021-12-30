@@ -27,9 +27,19 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val msg = intent.getStringExtra("success_login_msg")
-        if (!msg.isNullOrBlank()) {
-            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        val success_login_msg = intent.getStringExtra("success_login_msg")
+        if (!success_login_msg.isNullOrBlank()) {
+            Toast.makeText(this, success_login_msg, Toast.LENGTH_LONG).show()
+        }
+
+        val success_register_msg = intent.getStringExtra("success_register_msg")
+        if (!success_register_msg.isNullOrBlank()) {
+            Toast.makeText(this, success_register_msg, Toast.LENGTH_LONG).show()
+        }
+
+        val success_post_msg = intent.getStringExtra("success_post_msg")
+        if (!success_post_msg.isNullOrBlank()) {
+            Toast.makeText(this, success_post_msg, Toast.LENGTH_LONG).show()
         }
 
         val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
@@ -42,6 +52,8 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this@HomeActivity, ProfileEditActivity::class.java))
         }
 
+        val _tvNoPost = findViewById<TextView>(R.id.tvNoPost)
+
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
         _lvPost = findViewById(R.id.lvPost)
         readData(db)
@@ -51,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this@HomeActivity, PostActivity::class.java))
         }
 
-        var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
+        val _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
         val items_province: MutableList<String> = mutableListOf()
         getProvinceDataAPI(items_province, this)
         val adapter_province = ArrayAdapter(
@@ -61,12 +73,16 @@ class HomeActivity : AppCompatActivity() {
         )
         _spinner_provinsi.setAdapter(adapter_province)
 
-        var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+        val _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
         val _kotaLayout = findViewById<TextInputLayout>(R.id.kotaLayout)
         _spinner_kota.isEnabled = false;
         _spinner_kota.isClickable = false;
 
+        val _tvResetFilter = findViewById<TextView>(R.id.tvResetFilter)
+
         _spinner_provinsi.setOnItemClickListener { _, _, _, _ ->
+            _tvResetFilter.visibility = View.VISIBLE
+
             _lvPost = findViewById(R.id.lvPost)
             readData_Province(db, _spinner_provinsi.getText().toString())
 
@@ -89,10 +105,28 @@ class HomeActivity : AppCompatActivity() {
             _spinner_kota.setAdapter(adapter_kota)
         }
 
-        //Spinner Kota Item Selected (Read Posts by Filter Province n City)
+        _tvResetFilter.setOnClickListener {
+            readData(db)
+
+            _tvNoPost.visibility = View.GONE
+            _tvResetFilter.visibility = View.GONE
+
+            _spinner_kota.setText("")
+            _spinner_provinsi.setText("")
+
+            _spinner_kota.clearFocus()
+            _spinner_provinsi.clearFocus()
+
+            _spinner_kota.isEnabled = false;
+            _spinner_kota.isClickable = false;
+            _kotaLayout.hint = "Please select a province first"
+        }
+
+        // Spinner Kota Item Selected (Read Posts by Filter Province n City)
         _spinner_kota.setOnItemClickListener({ _, _, _, _ ->
             readData_Kota(db, _spinner_provinsi.getText().toString(),
                 _spinner_kota.getText().toString())
+            _tvResetFilter.visibility = View.VISIBLE
         })
     }
 

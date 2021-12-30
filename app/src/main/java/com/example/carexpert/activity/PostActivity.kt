@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.carexpert.*
@@ -16,9 +15,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import android.widget.AdapterView
 
-import android.widget.AdapterView.OnItemClickListener
 
 class PostActivity : AppCompatActivity() {
     private var dataPost : ArrayList<Post> = ArrayList()
@@ -36,6 +33,7 @@ class PostActivity : AppCompatActivity() {
     private lateinit var _post: TextInputEditText
     private lateinit var _postLayout: TextInputLayout
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         this.getSupportActionBar()?.hide()
         super.onCreate(savedInstanceState)
@@ -111,21 +109,22 @@ class PostActivity : AppCompatActivity() {
                 TambahData(db, username_global, formatted_date, formatted_time,
                     _spinner_kota.text.toString(), _spinner_provinsi.text.toString(),
                     _title_post.text.toString(), _post.text.toString())
-
-                val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
-                startActivity(eIntent)
             }
         }
     }
 
     private fun TambahData(db: FirebaseFirestore, username : String, date : String, time : String, Kota : String,
                            Provinsi : String, Expired : String, Post : String){
-        val namaBaru = Post(username, date, time, Kota, Provinsi, Expired, Post)
+        val postObj = Post(username, date, time, Kota, Provinsi, Expired, Post)
         db.collection("tbPost")
-            .add(namaBaru)
+            .add(postObj)
             .addOnSuccessListener {
                 readData(db)
-                Log.d("Firebase", "Simpan Data Berhasil")
+                val eIntent = Intent(this@PostActivity, HomeActivity::class.java).apply {
+                    putExtra("success_post_msg", "Successfully posted!")
+                }
+                startActivity(eIntent)
+                Log.d("Firebase", "Successfully posted!")
             }
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())
@@ -148,7 +147,6 @@ class PostActivity : AppCompatActivity() {
                         document.data["post"].toString())
                     dataPost.add(namaBaru)
                 }
-                //lvAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())

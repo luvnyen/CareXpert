@@ -1,17 +1,15 @@
 package com.example.carexpert.activity
 
-import android.annotation.SuppressLint
-import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.*
-import com.example.carexpert.R
+import com.example.carexpert.*
 import com.example.carexpert.model.User
-import com.example.carexpert.setAutoCompleteTextViewEmptyError
-import com.example.carexpert.setTextInputEmptyError
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -132,8 +130,10 @@ class SignUpActivity : AppCompatActivity() {
 
                     if (!TextUtils.isEmpty(_password.text)) {
                         if (_password.text.toString().length < 6) {
-                            passwordLayout.error = "Password should be minimum 6 characters"
-                        } else {
+                            passwordLayout.error = "Password should be minimum of 6 characters"
+                        }
+
+                        if (_password.text.toString().length >= 6 && !isPasswordDouble) {
                             passwordLayout.error = ""
                         }
                     }
@@ -143,15 +143,13 @@ class SignUpActivity : AppCompatActivity() {
                         emailLayout.error = ""
                     }
 
-                    if (!TextUtils.isEmpty(_username.text) && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text) && !TextUtils.isEmpty(_gender.text) && !TextUtils.isEmpty(_nama.text) && !TextUtils.isEmpty(_email.text)) {
+                    if (!TextUtils.isEmpty(_username.text) && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text) && !TextUtils.isEmpty(_gender.text) && !TextUtils.isEmpty(_nama.text) && !TextUtils.isEmpty(_email.text) && _password.text.toString().length >= 6) {
                         if (!foundEmailAddressDouble && !foundUsernameDouble && !isPasswordDouble) {
                             val date = Calendar.getInstance().time
                             val formatter = SimpleDateFormat.getDateInstance()
                             val formatedDate = formatter.format(date)
 
                             TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), formatedDate, _email.text.toString(), _password.text.toString())
-
-                            startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
                         }
                     }
                 }
@@ -166,12 +164,18 @@ class SignUpActivity : AppCompatActivity() {
         db.collection("tbUser").document(username)
             .set(namaBaru)
             .addOnSuccessListener {
-                _nama.setText("")
-                _username.setText("")
-                _email.setText("")
-                _password.setText("")
-                _fromDate.setText("")
-                Log.d("Firebase", "Simpan Data Berhasil")
+                setUsername(username)
+
+                val sp : SharedPreferences = getSharedPreferences("usernameSP", Context.MODE_PRIVATE)
+                val editor = sp.edit()
+                editor.putString("spUsername", username_global)
+                editor.apply()
+
+                val eIntent = Intent(this@SignUpActivity, HomeActivity::class.java).apply {
+                    putExtra("success_register_msg", "Successfully registered!")
+                }
+                startActivity(eIntent)
+                Log.d("Firebase", "Successfully registered!")
             }
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())

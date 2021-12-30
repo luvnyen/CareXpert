@@ -182,13 +182,11 @@
 
         <TextView
             android:id="@+id/tvNoPost"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="You have currently made no posts yet"
-            android:textColor="@color/gray"
-            android:textSize="16sp"
-            android:visibility="gone" />
+            android:textColor="@color/gray" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -297,6 +295,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center"
                 app:srcCompat="@drawable/ic_baseline_person_24_focused" />
 
             <TextView

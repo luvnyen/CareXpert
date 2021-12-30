@@ -1,5 +1,6 @@
 package com.example.carexpert.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +8,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -90,7 +93,12 @@ class CommentActivity : AppCompatActivity() {
                     username_global, _comment.text.toString(), formatted_date.toString(),
                     formatted_time.toString())
 
-                //Refresh Comment Lists
+                it.hideKeyboard()
+
+                Toast.makeText(this, "Successfully posted!", Toast.LENGTH_LONG).show()
+
+
+                // refresh Comment Lists
                 _lvComment = findViewById(R.id.lvComment)
                 readData_Comments(db, username_other_global,
                     date_post_global, time_post_global)
@@ -141,7 +149,6 @@ class CommentActivity : AppCompatActivity() {
 
                 commentAdapter.setOnItemClickCallback(object : CommentAdapter.OnItemClickCallback{
                     override fun onItemClicked(data:Comment){
-                        //GetData(db, data)
                         val eIntent = Intent(this@CommentActivity, SearchProfileActivity::class.java)
                         setOtherUsername(data.username_comment)
                         startActivity(eIntent)
@@ -162,6 +169,7 @@ class CommentActivity : AppCompatActivity() {
             .add(namaBaru)
             .addOnSuccessListener {
                 _comment.setText("")
+                _comment.clearFocus()
                 Log.d("Firebase", "Simpan Data Berhasil")
             }
             .addOnFailureListener{
@@ -191,6 +199,11 @@ class CommentActivity : AppCompatActivity() {
             .addOnFailureListener{
                 Log.d("Firebase", it.message.toString())
             }
+    }
+
+    fun View.hideKeyboard() {
+        val inputManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(windowToken, 0)
     }
 }
 

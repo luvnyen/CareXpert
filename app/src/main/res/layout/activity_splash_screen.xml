@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Made with ❤ by"
+        android:text="Made with 💙 by"
         android:textColor="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/textView22"
         app:layout_constraintEnd_toEndOf="@+id/imageView6"
