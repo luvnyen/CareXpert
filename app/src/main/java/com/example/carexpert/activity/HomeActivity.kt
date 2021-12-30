@@ -27,6 +27,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val msg = intent.getStringExtra("success_login_msg")
+        if (!msg.isNullOrBlank()) {
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+        }
+
         val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
         _exploreIcon.setOnClickListener {
             startActivity(Intent(this@HomeActivity, ExploreActivity::class.java))
