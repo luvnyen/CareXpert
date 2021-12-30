@@ -21,9 +21,6 @@ class HomeActivity : AppCompatActivity() {
     private var arPost = arrayListOf<Post>()
     private lateinit var _write : Button
 
-    companion object {
-        const val username = "username"
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         this.supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -65,6 +62,9 @@ class HomeActivity : AppCompatActivity() {
         _spinner_kota.isClickable = false;
 
         _spinner_provinsi.setOnItemClickListener { _, _, _, _ ->
+            _lvPost = findViewById(R.id.lvPost)
+            readData_Province(db, _spinner_provinsi.getText().toString())
+
             val index: Int = items_province.indexOf(_spinner_provinsi.getText().toString())
             i_global = index
 
@@ -86,10 +86,11 @@ class HomeActivity : AppCompatActivity() {
 
         //Spinner Kota Item Selected (Read Posts by Filter Province n City)
         _spinner_kota.setOnItemClickListener({ _, _, _, _ ->
-
+            readData_Kota(db, _spinner_provinsi.getText().toString(),
+                _spinner_kota.getText().toString())
         })
 
-//        //Filter Spinner 1
+//        //Filter Spinner 1x
 //        _spinner = findViewById(R.id.spinner1)
 //        ArrayAdapter.createFromResource(
 //            this,
@@ -151,6 +152,81 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    private fun readData_Kota(db: FirebaseFirestore, province : String, city : String){
+        db.collection("tbPost")
+            .orderBy("date", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                arPost.clear()
+                for (document in result){
+                    if (document.data["provinsi"].toString() == province.toString() &&
+                        document.data["kota"].toString() == city.toString()){
+                        val PostBaru = Post(
+                            document.data["username"].toString(),
+                            document.data["date"].toString(),
+                            document.data["time"].toString(),
+                            document.data["kota"].toString(),
+                            document.data["provinsi"].toString(),
+                            document.data["title"].toString(),
+                            document.data["post"].toString())
+                        arPost.add(PostBaru)
+                    }
+                }
+                _lvPost.layoutManager = LinearLayoutManager(this)
+                val postAdapter = PostAdapter(arPost)
+                _lvPost.adapter = postAdapter
+
+                postAdapter.setOnItemClickCallback(object : PostAdapter.OnItemClickCallback{
+                    override fun onItemClicked(data:Post){
+                        //GetData(db, data)
+                        val eIntent = Intent(this@HomeActivity, CommentActivity::class.java)
+                        setPostOther(data.username, data.date, data.time)
+                        startActivity(eIntent)
+                    }
+                })
+            }
+            .addOnFailureListener{
+                Log.d("Firebase", it.message.toString())
+            }
+    }
+
+    private fun readData_Province(db: FirebaseFirestore, province : String){
+        db.collection("tbPost")
+            .orderBy("date", Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener { result ->
+                arPost.clear()
+                for (document in result){
+                    if (document.data["provinsi"].toString() == province.toString()){
+                        val PostBaru = Post(
+                            document.data["username"].toString(),
+                            document.data["date"].toString(),
+                            document.data["time"].toString(),
+                            document.data["kota"].toString(),
+                            document.data["provinsi"].toString(),
+                            document.data["title"].toString(),
+                            document.data["post"].toString())
+                        arPost.add(PostBaru)
+                    }
+                }
+                _lvPost.layoutManager = LinearLayoutManager(this)
+                val postAdapter = PostAdapter(arPost)
+                _lvPost.adapter = postAdapter
+
+                postAdapter.setOnItemClickCallback(object : PostAdapter.OnItemClickCallback{
+                    override fun onItemClicked(data:Post){
+                        //GetData(db, data)
+                        val eIntent = Intent(this@HomeActivity, CommentActivity::class.java)
+                        setPostOther(data.username, data.date, data.time)
+                        startActivity(eIntent)
+                    }
+                })
+            }
+            .addOnFailureListener{
+                Log.d("Firebase", it.message.toString())
+            }
+    }
+
     private fun readData(db: FirebaseFirestore){
         db.collection("tbPost")
             .orderBy("date", Query.Direction.DESCENDING)
@@ -185,6 +261,7 @@ class HomeActivity : AppCompatActivity() {
                 Log.d("Firebase", it.message.toString())
             }
     }
+
     override fun onBackPressed() {
         val intent = Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)
