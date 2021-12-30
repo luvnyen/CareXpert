@@ -63,7 +63,7 @@ class SearchProfileActivity : AppCompatActivity() {
                         _tvMadeByUsername.text = "Post made by ${document.data["nama"].toString()}"
 
                         val _tvUserSince = findViewById<TextView>(R.id.tvUserSince)
-                        _tvUserSince.text = "User since ${document.data["date"].toString()}"
+                        _tvUserSince.text = "User since ${document.data["date_created"].toString()}"
                     }
                 }
                 if (found == 0){

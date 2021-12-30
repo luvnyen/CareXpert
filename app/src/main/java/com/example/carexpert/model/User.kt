@@ -1,7 +1,7 @@
 package com.example.carexpert.model
 
 data class User (
-    var last_updated : String,
+    var date_created : String,
     var email : String,
     var gender : String,
     var nama : String,

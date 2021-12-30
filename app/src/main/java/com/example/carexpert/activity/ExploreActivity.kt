@@ -3,11 +3,13 @@ package com.example.carexpert.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.R
@@ -15,8 +17,8 @@ import com.example.carexpert.adapter.NewsAdapter
 import com.example.carexpert.getCovidDataAPI
 import com.example.carexpert.model.News
 import com.example.carexpert.setOtherUsername
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
-import org.w3c.dom.Text
 
 class ExploreActivity : AppCompatActivity() {
 
@@ -29,29 +31,47 @@ class ExploreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_explore)
 
-        //Pindah ke halaman Home
-        val _home = findViewById<ImageView>(R.id.home)
-        _home.setOnClickListener{
-            val eIntent = Intent(this@ExploreActivity, HomeActivity::class.java)
-            startActivity(eIntent)
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.homeIcon)
+        _homeIcon.setOnClickListener {
+            startActivity(Intent(this@ExploreActivity, HomeActivity::class.java))
         }
 
-        //Search User by username
-        val _username : EditText = findViewById(R.id.search_username)
-        //var _username_from_ = intent.getStringExtra(username)
-        _SearchButton = findViewById(R.id.SearchButton)
-        _SearchButton.setOnClickListener{
-            val eIntent = Intent(this@ExploreActivity, SearchProfileActivity::class.java)
-            setOtherUsername(_username.text.toString())
-            startActivity(eIntent)
+        val _profileIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        _profileIcon.setOnClickListener {
+            startActivity(Intent(this@ExploreActivity, ProfileEditActivity::class.java))
         }
+
+        val _username : TextInputEditText = findViewById(R.id.search_username)
+
+        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
         _username.setOnEditorActionListener { v, actionId, event ->
             return@setOnEditorActionListener when (actionId) {
                 EditorInfo.IME_ACTION_SEND -> {
-                    val eIntent = Intent(this@ExploreActivity, SearchProfileActivity::class.java)
-                    setOtherUsername(_username.text.toString())
-                    startActivity(eIntent)
+                    if (!TextUtils.isEmpty(_username.text)) {
+                        db.collection("tbUser")
+                            .get()
+                            .addOnSuccessListener { result ->
+                                var userFound = false
+                                for (document in result) {
+                                    if (document.data["username"].toString() == _username.text.toString()) {
+                                        userFound = true
+                                        setOtherUsername(_username.text.toString())
+                                        startActivity(Intent(this@ExploreActivity, SearchProfileActivity::class.java))
+                                    }
+                                }
+
+                                if (!userFound) {
+                                    Toast.makeText(this, "Username not found!", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                            .addOnFailureListener{
+                                Log.d("Firebase", it.message.toString())
+                            }
+                    } else {
+                        Toast.makeText(this, "Username cannot be empty!", Toast.LENGTH_LONG).show()
+                    }
+
                     true
                 }
                 else -> false
@@ -73,8 +93,12 @@ class ExploreActivity : AppCompatActivity() {
         val _tvLastUpdated = findViewById<TextView>(R.id.tvLastUpdated)
         getCovidDataAPI("tanggal",_tvLastUpdated, this,"penambahan")
 
+        val _tvSeeMore = findViewById<TextView>(R.id.tvSeeMore)
+        _tvSeeMore.setOnClickListener {
+            startActivity(Intent(this@ExploreActivity, COVID19DataActivity::class.java))
+        }
+
         //Read Berita
-        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
         _lvBerita = findViewById(R.id.lvBerita)
         readData(db)
     }

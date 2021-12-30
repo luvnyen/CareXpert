@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CareXpert">
         <activity
-            android:name=".activity.covid19_data"
+            android:name=".activity.COVID19DataActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ChatActivity"

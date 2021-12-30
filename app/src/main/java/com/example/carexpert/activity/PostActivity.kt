@@ -107,23 +107,19 @@ class PostActivity : AppCompatActivity() {
 
         val _btnPost : Button = findViewById(R.id.BtnPost)
         _btnPost.setOnClickListener {
-            TambahData(db, username_global, formatted_date, formatted_time,
-                _spinner_kota.text.toString(), _spinner_provinsi.text.toString(),
-                _title_post.text.toString(), _post.text.toString())
+            if (TextUtils.isEmpty(_spinner_kota.text) || TextUtils.isEmpty(_spinner_provinsi.text) || TextUtils.isEmpty(_title_post.text) || TextUtils.isEmpty(_post.text)) {
+                setAutoCompleteTextViewEmptyError(_spinner_kota, _kotaLayout, "City")
+                setAutoCompleteTextViewEmptyError(_spinner_provinsi, _provinsiLayout, "Province")
+                setTextInputEmptyError(_title_post, _titleLayout, "Post Title")
+                setTextInputEmptyError(_post, _postLayout, "Post Description")
+            } else {
+                TambahData(db, username_global, formatted_date, formatted_time,
+                    _spinner_kota.text.toString(), _spinner_provinsi.text.toString(),
+                    _title_post.text.toString(), _post.text.toString())
 
-            val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
-            startActivity(eIntent)
-
-//            if (TextUtils.isEmpty(_spinnerKota.text) || TextUtils.isEmpty(_spinnerProvinsi.text) || TextUtils.isEmpty(_title_post.text) || TextUtils.isEmpty(_post.text)) {
-//                setAutoCompleteTextViewEmptyError(_spinnerKota, _kotaLayout, "City")
-//                setAutoCompleteTextViewEmptyError(_spinnerProvinsi, _provinsiLayout, "Province")
-//                setTextInputEmptyError(_title_post, _titleLayout, "Post Title")
-//                setTextInputEmptyError(_post, _postLayout, "Post Description")
-//            } else {
-//
-//
-
-//            }
+                val eIntent = Intent(this@PostActivity, HomeActivity::class.java)
+                startActivity(eIntent)
+            }
         }
     }
 

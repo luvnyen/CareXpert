@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carexpert.*
@@ -29,11 +29,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        //Pindah ke halaman Explore
-        val _explore = findViewById<ImageView>(R.id.explore)
-        _explore.setOnClickListener{
-            val eIntent = Intent(this@HomeActivity, ExploreActivity::class.java)
-            startActivity(eIntent)
+        val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
+        _exploreIcon.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, ExploreActivity::class.java))
+        }
+
+        val _profileIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        _profileIcon.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, ProfileEditActivity::class.java))
         }
 
         //Read all Post
@@ -41,11 +44,9 @@ class HomeActivity : AppCompatActivity() {
         _lvPost = findViewById(R.id.lvPost)
         readData(db)
 
-        //Pindah ke halaman Post
         _write = findViewById(R.id.button)
         _write.setOnClickListener{
-            val eIntent = Intent(this@HomeActivity, PostActivity::class.java)
-            startActivity(eIntent)
+            startActivity(Intent(this@HomeActivity, PostActivity::class.java))
         }
 
         var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)

@@ -6,4 +6,316 @@
     android:layout_height="match_parent"
     tools:context=".activity.covid19_data">
 
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="🌎 Worldwide COVID-19 Cases"
+        android:textColor="#005C9A"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/backButton"
+        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+
+    <LinearLayout
+        android:id="@+id/dataBoxWorldwide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#fce7dc">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Cases"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvConfirmedCasesWorldwide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#D2854F"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#f7cbd7">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deaths"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDeathCasesWorldwide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#d9326f"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSourceWorldwide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Source: https://api.kawalcorona.com/"
+        android:textColor="@color/gray"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/dataBoxWorldwide"
+        app:layout_constraintTop_toBottomOf="@+id/dataBoxWorldwide" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="🇮🇩 COVID-19 Cases in Indonesia"
+        android:textColor="#005C9A"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/backButton"
+        app:layout_constraintTop_toBottomOf="@+id/tvSourceWorldwide" />
+
+    <LinearLayout
+        android:id="@+id/dataBoxIndonesia1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView16">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#fce7dc">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Cases"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvConfirmedCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#D2854F"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/tvAdditionConfirmedCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="addition"
+                android:textColor="#D2854F"
+                app:layout_constraintStart_toStartOf="@+id/tvConfirmedCasesIndonesia"
+                app:layout_constraintTop_toBottomOf="@+id/tvConfirmedCasesIndonesia" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#f7cbd7">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deaths"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDeathCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#d9326f"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/tvAdditionDeathCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="addition"
+                android:textColor="#d9326f"
+                app:layout_constraintStart_toStartOf="@+id/tvDeathCasesIndonesia"
+                app:layout_constraintTop_toBottomOf="@+id/tvDeathCasesIndonesia" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dataBoxIndonesia2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dataBoxIndonesia1"
+        app:layout_constraintTop_toBottomOf="@+id/dataBoxIndonesia1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#cafcee">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recovered"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRecoveredCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#29A46D"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView19"
+                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+            <TextView
+                android:id="@+id/tvAdditionRecoveredCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="addition"
+                android:textColor="#29A46D"
+                app:layout_constraintStart_toStartOf="@+id/tvRecoveredCasesIndonesia"
+                app:layout_constraintTop_toBottomOf="@+id/tvRecoveredCasesIndonesia" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_bg"
+            android:backgroundTint="#c9c9ff">
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Treated"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTreatedCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="total_cases"
+                android:textColor="#7150E7"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/tvAdditionTreatedCasesIndonesia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="addition"
+                android:textColor="#7150E7"
+                app:layout_constraintStart_toStartOf="@+id/tvTreatedCasesIndonesia"
+                app:layout_constraintTop_toBottomOf="@+id/tvTreatedCasesIndonesia" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLastUpdatedIndonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Last updated: ___"
+        android:textColor="@color/gray"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/dataBoxIndonesia2"
+        app:layout_constraintTop_toBottomOf="@+id/dataBoxIndonesia2" />
+
+    <TextView
+        android:id="@+id/tvSourceIndonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Source: https://data.covid19.go.id/"
+        android:textColor="@color/gray"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/tvLastUpdatedIndonesia"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastUpdatedIndonesia" />
 </androidx.constraintlayout.widget.ConstraintLayout>

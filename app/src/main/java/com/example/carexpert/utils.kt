@@ -53,6 +53,25 @@ fun setAutoCompleteTextViewEmptyError(_textInput: AutoCompleteTextView, _textInp
 fun String.capitalizeWords(): String = split(" ").map { it.lowercase(Locale.getDefault())
     .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }.joinToString(" ")
 
+fun getCovidDataAPIWorldwide(key: String, _textView: TextView, context: AppCompatActivity) {
+    // Instantiate the RequestQueue.
+    val queue = Volley.newRequestQueue(context)
+    val url = "https://api.kawalcorona.com/$key/"
+
+    // Request a string response from the provided URL.
+    val stringRequest = StringRequest(
+        Request.Method.GET, url,
+        { response ->
+            val obj = JSONTokener(response).nextValue() as JSONObject
+            val data = obj.get("value")
+            _textView.text = data.toString()
+        },
+        { _textView.text = "ERROR" })
+
+    // Add the request to the RequestQueue.
+    queue.add(stringRequest)
+}
+
 fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity, type : String) {
     // Instantiate the RequestQueue.
     val queue = Volley.newRequestQueue(context)
@@ -77,7 +96,15 @@ fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity
                 if (key == "tanggal") {
                     _textView.text = "Last updated: $myString"
                 } else {
-                    _textView.text = "+$myString cases"
+                    if (key == "jumlah_positif") {
+                        _textView.text = "+$myString cases"
+                    } else {
+                        if (key == "jumlah_dirawat") {
+                            _textView.text = "$myString"
+                        } else {
+                            _textView.text = "+$myString"
+                        }
+                    }
                 }
             } else {
                 _textView.text = myString.toString()

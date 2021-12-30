@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Button
+import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
 import com.example.carexpert.model.User
+import com.example.carexpert.setOtherUsername
+import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -36,6 +36,8 @@ class ProfileEditActivity : AppCompatActivity() {
         val _passwordLayout = findViewById<TextInputLayout>(R.id.passwordLayout)
         val _edit_Password = findViewById<TextInputEditText>(R.id.edit_Password)
 
+        val _tvProfileName = findViewById<TextView>(R.id.tvProfileName)
+
         // dropdown menu list of items
         val items = listOf("Pria", "Wanita")
         val adapter = ArrayAdapter(
@@ -49,11 +51,12 @@ class ProfileEditActivity : AppCompatActivity() {
         db.collection("tbUser").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.data["username"].toString() == "jovian6") {
+                    if (document.data["username"].toString() == username_global) {
                         _edit_FullName.setText(document.data["nama"].toString())
                         _edit_Email.setText(document.data["email"].toString())
                         if (document.data["gender"].toString() == "Pria") _edit_Gender.setText(items[0], false) else _edit_Gender.setText(items[1], false)
                         _edit_Password.setText(document.data["password"].toString())
+                        _tvProfileName.text = document.data["nama"].toString()
                     }
                 }
             }
@@ -78,20 +81,39 @@ class ProfileEditActivity : AppCompatActivity() {
                 setTextInputEmptyError(_edit_Email, _emailLayout, "E-mail Address")
                 setTextInputEmptyError(_edit_Password, _passwordLayout, "Password")
             } else {
-                // get local time
-                val date = Calendar.getInstance().time
-                val formatter = SimpleDateFormat.getDateTimeInstance()
-                val formatedDate = formatter.format(date)
+                db.collection("tbUser")
+                    .get()
+                    .addOnSuccessListener { result ->
+                        var foundEmailAddressDouble = false
+                        for (document in result) {
+                            if (document.data["email"].toString() == _edit_Email.text.toString() && document.data["username"].toString() != username_global) {
+                                foundEmailAddressDouble = true
+                                _emailLayout.error = "E-mail Address has already been taken"
+                            }
+                        }
 
-                val userObj = User(formatedDate, _edit_Email.text.toString(), _edit_Gender.text.toString(), _edit_FullName.text.toString(), _edit_Password.text.toString(), "jovian6")
+                        if (!foundEmailAddressDouble) {
+                            _emailLayout.error = ""
 
-                // update user data
-                db.collection("tbUser").document(userObj.username)
-                    .set(userObj)
-                    .addOnSuccessListener {
-                        Log.d("Firebase", "Successfully updated user data!")
+                            // get local time
+                            val date = Calendar.getInstance().time
+                            val formatter = SimpleDateFormat.getDateTimeInstance()
+                            val formatedDate = formatter.format(date)
+
+                            val userObj = User(formatedDate, _edit_Email.text.toString(), _edit_Gender.text.toString(), _edit_FullName.text.toString(), _edit_Password.text.toString(), username_global)
+
+                            // update user data
+                            db.collection("tbUser").document(userObj.username)
+                                .set(userObj)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "Successfully updated biodata!", Toast.LENGTH_LONG).show()
+                                }
+                                .addOnFailureListener {
+                                    Log.d("Firebase", it.message.toString())
+                                }
+                        }
                     }
-                    .addOnFailureListener {
+                    .addOnFailureListener{
                         Log.d("Firebase", it.message.toString())
                     }
             }
