@@ -1,6 +1,8 @@
 package com.example.carexpert.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -122,6 +124,18 @@ class BMIActivity : AppCompatActivity() {
                 _tvWeightRange.visibility = View.VISIBLE
                 _tvWeightRange.text = formattedWeightRange
             }
+        }
+
+        //Sign Out
+        var sp : SharedPreferences = getSharedPreferences("usernameSP", Context.MODE_PRIVATE)
+        val _tvSignOut : TextView = findViewById(R.id.tvSignOut)
+        _tvSignOut.setOnClickListener {
+            username_global = ""
+            val editor = sp.edit()
+            editor.putString("spUsername", username_global)
+            editor.apply()
+
+            startActivity(Intent(this@BMIActivity, SignInActivity::class.java))
         }
     }
 }

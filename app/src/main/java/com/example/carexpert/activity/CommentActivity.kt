@@ -67,8 +67,9 @@ class CommentActivity : AppCompatActivity() {
         //Pindah ke halaman Home
         val _ImageView6 = findViewById<ImageView>(R.id.BackButton3)
         _ImageView6.setOnClickListener{
-            val eIntent = Intent(this@CommentActivity, HomeActivity::class.java)
-            startActivity(eIntent)
+            //val eIntent = Intent(this@CommentActivity, HomeActivity::class.java)
+            //startActivity(eIntent)
+            super.onBackPressed()
         }
 
         //Kirim Komen

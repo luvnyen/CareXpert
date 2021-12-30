@@ -30,8 +30,9 @@ class SearchProfileActivity : AppCompatActivity() {
 
         val _ImageView6 = findViewById<ImageView>(R.id.imageView7)
         _ImageView6.setOnClickListener{
-            val eIntent = Intent(this@SearchProfileActivity, HomeActivity::class.java)
-            startActivity(eIntent)
+            //val eIntent = Intent(this@SearchProfileActivity, HomeActivity::class.java)
+            //startActivity(eIntent)
+            super.onBackPressed()
         }
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()

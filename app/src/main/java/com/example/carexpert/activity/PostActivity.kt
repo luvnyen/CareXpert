@@ -20,14 +20,9 @@ import android.widget.AdapterView
 
 import android.widget.AdapterView.OnItemClickListener
 
-
-
-
 class PostActivity : AppCompatActivity() {
     private var dataPost : ArrayList<Post> = ArrayList()
 
-//    private lateinit var _date : TextView
-//    private lateinit var _time : TextView
 
     private lateinit var _spinnerKota: AutoCompleteTextView
     private lateinit var _kotaLayout: TextInputLayout
