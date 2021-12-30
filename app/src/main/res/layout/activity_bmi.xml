@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:text="Hello,"
                 android:textColor="#005C9A"
@@ -33,7 +33,7 @@
                 android:id="@+id/tvSignOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="24dp"
                 android:text="Sign Out"
                 android:textColor="#e02d3f"
                 android:textStyle="bold"
@@ -45,8 +45,10 @@
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:text="Nice to meet you!"
                 android:textColor="#005C9A"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -144,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Chat"
+                    android:text="Posts"
                     android:textColor="#005C9A"
                     app:layout_constraintEnd_toEndOf="@+id/imageView5"
                     app:layout_constraintStart_toStartOf="@+id/imageView5"
@@ -194,15 +196,15 @@
                 android:layout_marginEnd="8dp"
                 android:hint="Height (cm)"
                 android:textColorHint="@color/gray"
-                app:startIconTint="@color/primary"
                 app:boxStrokeColor="@color/primary"
-                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/primary"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:startIconDrawable="@drawable/ic_baseline_height_24">
+                app:startIconDrawable="@drawable/ic_baseline_height_24"
+                app:startIconTint="@color/primary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_Height"
@@ -221,17 +223,17 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:hint="Weight (kg)"
-                android:textColorHint="@color/gray"
                 android:textColor="@color/black"
-                app:startIconTint="@color/primary"
+                android:textColorHint="@color/gray"
                 app:boxStrokeColor="@color/primary"
-                app:endIconTint="@color/primary"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/primary"
                 app:errorEnabled="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/heightLayout"
-                app:startIconDrawable="@drawable/ic_baseline_balance_24">
+                app:startIconDrawable="@drawable/ic_baseline_balance_24"
+                app:startIconTint="@color/primary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_Weight"
@@ -262,9 +264,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="BMI: ___"
-                android:visibility="gone"
-                android:textSize="17sp"
                 android:textColor="#005C9A"
+                android:textSize="17sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/btnCalculateBMI"
                 app:layout_constraintTop_toBottomOf="@+id/btnCalculateBMI" />
 
@@ -274,9 +276,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Category: ___"
-                android:visibility="gone"
                 android:textColor="#005C9A"
                 android:textSize="17sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/tvBMI"
                 app:layout_constraintTop_toBottomOf="@+id/tvBMI" />
 
@@ -286,10 +288,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                android:textSize="17sp"
                 android:text="For your height, a normal weight range would be from _ to _ kilograms."
                 android:textColor="#005C9A"
+                android:textSize="17sp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvCategory"
                 app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
@@ -297,4 +299,99 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-</ScrollView>
+
+    <LinearLayout
+        android:id="@+id/bottomnav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/radiusnav"
+        android:backgroundTint="#005C9A"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/homeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_home_24" />
+
+            <TextView
+                android:id="@+id/tvHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/home"
+                app:layout_constraintStart_toStartOf="@+id/home"
+                app:layout_constraintTop_toBottomOf="@+id/home" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/exploreIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/explore"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_explore_24" />
+
+            <TextView
+                android:id="@+id/tvExplore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explore"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/explore"
+                app:layout_constraintStart_toStartOf="@+id/explore"
+                app:layout_constraintTop_toBottomOf="@+id/explore" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_person_24_focused" />
+
+            <TextView
+                android:id="@+id/tvProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile"
+                android:textColor="#FCC777"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/profile"
+                app:layout_constraintStart_toStartOf="@+id/profile"
+                app:layout_constraintTop_toBottomOf="@+id/profile" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

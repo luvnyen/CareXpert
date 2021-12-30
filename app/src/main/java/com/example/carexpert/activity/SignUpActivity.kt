@@ -15,6 +15,7 @@ import com.example.carexpert.setTextInputEmptyError
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -144,10 +145,13 @@ class SignUpActivity : AppCompatActivity() {
 
                     if (!TextUtils.isEmpty(_username.text) && !TextUtils.isEmpty(_password.text) && !TextUtils.isEmpty(_confirmPassword.text) && !TextUtils.isEmpty(_gender.text) && !TextUtils.isEmpty(_nama.text) && !TextUtils.isEmpty(_email.text)) {
                         if (!foundEmailAddressDouble && !foundUsernameDouble && !isPasswordDouble) {
-                            Toast.makeText(applicationContext, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
-                            TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), "test", _email.text.toString(), _password.text.toString())
-                    val eIntent = Intent(this@SignUpActivity, HomeActivity::class.java)
-                    startActivity(eIntent)
+                            val date = Calendar.getInstance().time
+                            val formatter = SimpleDateFormat.getDateInstance()
+                            val formatedDate = formatter.format(date)
+
+                            TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), formatedDate, _email.text.toString(), _password.text.toString())
+
+                            startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
                         }
                     }
                 }

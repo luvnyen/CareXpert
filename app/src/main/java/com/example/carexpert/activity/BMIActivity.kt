@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -12,8 +13,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.text.bold
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
+import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.firestore.FirebaseFirestore
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -22,6 +25,22 @@ class BMIActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bmi)
 
+        val db : FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        // get user data
+        db.collection("tbUser").get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    if (document.data["username"].toString() == username_global) {
+                        val _tvProfileName = findViewById<TextView>(R.id.tvProfileName)
+                        _tvProfileName.text = document.data["nama"].toString()
+                    }
+                }
+            }
+            .addOnFailureListener {
+                Log.d("Firebase", it.message.toString())
+            }
+
         val _btnProfile = findViewById<ConstraintLayout>(R.id.btnProfile)
         _btnProfile.setOnClickListener {
             startActivity(Intent(this@BMIActivity, ProfileEditActivity::class.java))
@@ -29,7 +48,7 @@ class BMIActivity : AppCompatActivity() {
 
         val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
         _btnChat.setOnClickListener {
-            startActivity(Intent(this@BMIActivity, ChatActivity::class.java))
+            startActivity(Intent(this@BMIActivity, ProfilePostsActivity::class.java))
         }
 
         val _heightLayout = findViewById<TextInputLayout>(R.id.heightLayout)

@@ -263,14 +263,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_explore_24" />
+                app:srcCompat="@drawable/ic_baseline_explore_24_focused" />
 
             <TextView
                 android:id="@+id/tvExplore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Explore"
-                android:textColor="@color/white"
+                android:textColor="#FCC777"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/explore"
                 app:layout_constraintStart_toStartOf="@+id/explore"

@@ -10,7 +10,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
 import com.example.carexpert.model.User
-import com.example.carexpert.setOtherUsername
 import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -24,6 +23,16 @@ class ProfileEditActivity : AppCompatActivity() {
         setContentView(R.layout.activity_profile_edit)
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val _btnBMI = findViewById<ConstraintLayout>(R.id.btnBMI)
+        _btnBMI.setOnClickListener {
+            startActivity(Intent(this@ProfileEditActivity, BMIActivity::class.java))
+        }
+
+        val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
+        _btnChat.setOnClickListener {
+            startActivity(Intent(this@ProfileEditActivity, ProfilePostsActivity::class.java))
+        }
 
         val _fullNameLayout = findViewById<TextInputLayout>(R.id.fullNameLayout)
         val _edit_FullName = findViewById<TextInputEditText>(R.id.edit_FullName)
@@ -64,16 +73,6 @@ class ProfileEditActivity : AppCompatActivity() {
                 Log.d("Firebase", it.message.toString())
             }
 
-        val _btnBMI = findViewById<ConstraintLayout>(R.id.btnBMI)
-        _btnBMI.setOnClickListener {
-            startActivity(Intent(this@ProfileEditActivity, BMIActivity::class.java))
-        }
-
-        val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
-        _btnChat.setOnClickListener {
-            startActivity(Intent(this@ProfileEditActivity, ChatActivity::class.java))
-        }
-
         val _btnUpdateUserData = findViewById<Button>(R.id.btnUpdateUserData)
         _btnUpdateUserData.setOnClickListener {
             if (TextUtils.isEmpty(_edit_FullName.text) || TextUtils.isEmpty(_edit_Email.text) || TextUtils.isEmpty(_edit_Password.text)) {
@@ -97,7 +96,7 @@ class ProfileEditActivity : AppCompatActivity() {
 
                             // get local time
                             val date = Calendar.getInstance().time
-                            val formatter = SimpleDateFormat.getDateTimeInstance()
+                            val formatter = SimpleDateFormat.getDateInstance()
                             val formatedDate = formatter.format(date)
 
                             val userObj = User(formatedDate, _edit_Email.text.toString(), _edit_Gender.text.toString(), _edit_FullName.text.toString(), _edit_Password.text.toString(), username_global)

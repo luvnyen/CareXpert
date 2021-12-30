@@ -226,7 +226,6 @@
         android:id="@+id/lvComment"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
         android:layout_marginTop="8dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"

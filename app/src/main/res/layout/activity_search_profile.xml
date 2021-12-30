@@ -86,9 +86,22 @@
         android:layout_marginTop="16dp"
         android:textColor="#005C9A"
         android:textStyle="bold"
-        android:text="Post made by username"
+        android:text="Posts made by username"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <TextView
+        android:id="@+id/tvNoPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="This user has made no posts yet"
+        android:visibility="gone"
+        android:textColor="@color/gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMadeByUsername" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lvPost"
@@ -101,7 +114,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvMadeByUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNoPost" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

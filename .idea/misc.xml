@@ -28,8 +28,8 @@
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_comment.xml" value="0.5" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_comment_field.xml" value="0.2546875" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_covid19_data.xml" value="0.5" />
-        <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_explore.xml" value="0.33" />
-        <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_home.xml" value="0.33" />
+        <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_explore.xml" value="0.5" />
+        <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_home.xml" value="0.5" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_login_page.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_main.xml" value="0.35833333333333334" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_page_comment.xml" value="0.10092592592592593" />
@@ -47,6 +47,7 @@
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_profile_edit.xml" value="0.33" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_profile_main.xml" value="0.33" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_profile_post.xml" value="0.33" />
+        <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_profile_posts.xml" value="0.33" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_search_profile.xml" value="0.33" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
         <entry key="..\:/Users/Jeffery Tanudihardjo/AndroidStudioProjects/CareXpert/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />

@@ -15,7 +15,7 @@
             android:name=".activity.COVID19DataActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ChatActivity"
+            android:name=".activity.ProfilePostsActivity"
             android:exported="true" />
         <activity
             android:name=".activity.SplashScreenActivity"

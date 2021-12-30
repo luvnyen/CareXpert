@@ -38,6 +38,31 @@
             app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/kotaLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Please select a province first"
+            android:textColorHint="@color/gray"
+            app:boxStrokeColor="@color/primary"
+            app:endIconTint="@color/primary"
+            app:layout_constraintEnd_toEndOf="@+id/provinsiLayout"
+            app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
+            app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
+            app:startIconDrawable="@drawable/ic_baseline_location_city_24"
+            app:startIconTint="@color/primary">
+
+            <AutoCompleteTextView
+                android:id="@+id/spinner_kota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/provinsiLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
@@ -64,30 +89,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/kotaLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tvNoPost"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Please select a province first"
-            android:textColorHint="@color/gray"
-            app:boxStrokeColor="@color/primary"
-            app:endIconTint="@color/primary"
-            app:layout_constraintEnd_toEndOf="@+id/provinsiLayout"
-            app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
-            app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24"
-            app:startIconTint="@color/primary">
-
-            <AutoCompleteTextView
-                android:id="@+id/spinner_kota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="24dp"
+            android:text="There are currently no post in the selected area..."
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kotaLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -112,7 +123,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-             <androidx.recyclerview.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/lvPost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -145,14 +156,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_home_24" />
+                app:srcCompat="@drawable/ic_baseline_home_24_focused" />
 
             <TextView
                 android:id="@+id/tvHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
-                android:textColor="@color/white"
+                android:textColor="#FCC777"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/home"
                 app:layout_constraintStart_toStartOf="@+id/home"
