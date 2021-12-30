@@ -1,6 +1,8 @@
 package com.example.carexpert.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,6 +12,7 @@ import android.widget.*
 import com.example.carexpert.R
 import com.example.carexpert.setTextInputEmptyError
 import com.example.carexpert.setUsername
+import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
@@ -17,10 +20,14 @@ import org.w3c.dom.Text
 
 
 class SignInActivity : AppCompatActivity() {
+    lateinit var sp : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         this.getSupportActionBar()?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        sp = getSharedPreferences("usernameSP",Context.MODE_PRIVATE)
 
         // pindah ke halaman SignUp
         val _daftar = findViewById<TextView>(R.id.daftar)
@@ -55,6 +62,11 @@ class SignInActivity : AppCompatActivity() {
                                 document.data["password"].toString() == _password.text.toString()){
                                 found = true
                                 setUsername(_username.text.toString())
+
+                                val editor = sp.edit()
+                                editor.putString("spUsername", username_global)
+                                editor.apply()
+
                                 val eIntent = Intent(this@SignInActivity, HomeActivity::class.java).apply {
                                     putExtra("success_login_msg", "Welcome back!")
                                 }
@@ -72,6 +84,15 @@ class SignInActivity : AppCompatActivity() {
                         Log.d("Firebase", it.message.toString())
                     }
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        username_global = sp.getString("spUsername",null).toString()
+        if (username_global != "" && username_global != "null"){
+            val eIntent = Intent(this@SignInActivity, HomeActivity::class.java)
+            startActivity(eIntent)
         }
     }
 }
