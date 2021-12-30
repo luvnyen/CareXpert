@@ -8,11 +8,9 @@ import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.carexpert.R
+import com.example.carexpert.*
 import com.example.carexpert.adapter.PostAdapter
 import com.example.carexpert.model.Post
-import com.example.carexpert.setPostOther
-import com.example.carexpert.username_global
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 
@@ -35,13 +33,9 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         //Pindah ke halaman Explore
-        //val _username_from_login = intent.getStringExtra(username)
         val _explore = findViewById<ImageView>(R.id.explore)
         _explore.setOnClickListener{
             val eIntent = Intent(this@HomeActivity, ExploreActivity::class.java)
-                //.apply {
-                //putExtra(ExploreActivity.username, _username_from_login)
-            //}
             startActivity(eIntent)
         }
 
@@ -51,15 +45,48 @@ class HomeActivity : AppCompatActivity() {
         readData(db)
 
         //Pindah ke halaman Post
-        //var _username_from_login = intent.getStringExtra(username)
         _write = findViewById(R.id.button)
         _write.setOnClickListener{
             val eIntent = Intent(this@HomeActivity, PostActivity::class.java)
-                //.apply {
-                //putExtra(PostActivity.username, _username_from_login.toString())
-            //}
             startActivity(eIntent)
         }
+
+        //Spinner Province
+        var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
+        val items_province: MutableList<String> = mutableListOf()
+        getProvinceDataAPI(items_province, this)
+        val adapter_province = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            items_province
+        )
+        _spinner_provinsi.setAdapter(adapter_province)
+
+        //Spinner Kota
+        var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+
+        _spinner_provinsi.setOnItemClickListener(AdapterView.OnItemClickListener { arg0, arg1, arg2, arg3 ->
+            val index: Int = items_province.indexOf(_spinner_provinsi.getText().toString())
+            i_global = index
+
+            _spinner_kota.setText("")
+            val items_kota: MutableList<String> = mutableListOf()
+
+            getCityDataAPI(items_kota, this)
+            val adapter_kota = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                items_kota
+            )
+            adapter_kota.notifyDataSetChanged()
+            _spinner_kota.setAdapter(adapter_kota)
+
+        })
+
+        //Spinner Kota Item Selected (Read Posts by Filter Province n City)
+        _spinner_kota.setOnItemClickListener(AdapterView.OnItemClickListener { arg0, arg1, arg2, arg3 ->
+
+        })
 
 //        //Filter Spinner 1
 //        _spinner = findViewById(R.id.spinner1)

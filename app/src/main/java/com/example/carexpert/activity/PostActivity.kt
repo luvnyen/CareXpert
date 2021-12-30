@@ -9,16 +9,19 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.carexpert.R
+import com.example.carexpert.*
 import com.example.carexpert.model.Post
-import com.example.carexpert.setAutoCompleteTextViewEmptyError
-import com.example.carexpert.setTextInputEmptyError
-import com.example.carexpert.username_global
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import android.widget.AdapterView
+
+import android.widget.AdapterView.OnItemClickListener
+
+
+
 
 class PostActivity : AppCompatActivity() {
     private var dataPost : ArrayList<Post> = ArrayList()
@@ -47,6 +50,53 @@ class PostActivity : AppCompatActivity() {
         _backButton.setOnClickListener{
             startActivity(Intent(this@PostActivity, HomeActivity::class.java))
         }
+
+        //Spinner Province
+        var _spinner_provinsi : AutoCompleteTextView = findViewById(R.id.spinner_provinsi)
+        val items_province: MutableList<String> = mutableListOf()
+        getProvinceDataAPI(items_province, this)
+        val adapter_province = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            items_province
+        )
+        _spinner_provinsi.setAdapter(adapter_province)
+
+        //Spinner Kota
+        var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+        _spinner_provinsi.setOnItemClickListener(OnItemClickListener { arg0, arg1, arg2, arg3 ->
+            val index: Int = items_province.indexOf(_spinner_provinsi.getText().toString())
+            i_global = index
+
+            _spinner_kota.setText("")
+            val items_kota: MutableList<String> = mutableListOf()
+
+            getCityDataAPI(items_kota, this)
+
+            val adapter_kota = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                items_kota
+            )
+            adapter_kota.notifyDataSetChanged()
+            _spinner_kota.setAdapter(adapter_kota)
+
+        })
+
+//        _spinner_provinsi.setOnClickListener {
+//            if (!TextUtils.isEmpty(_spinner_provinsi.getText())){
+//                getCityDataAPI(_spinner_provinsi.text.toString())
+//                var _spinner_kota : AutoCompleteTextView = findViewById(R.id.spinner_kota)
+//                val items_kota: MutableList<String> = mutableListOf()
+//                getCityDataAPI_(items_kota, this)
+//                val adapter_kota = ArrayAdapter(
+//                    this,
+//                    android.R.layout.simple_spinner_dropdown_item,
+//                    items_kota
+//                )
+//                _spinner_kota.setAdapter(adapter_kota)
+//            }
+//        }
 
         // Get username
 //        var _username_from_login = intent.getStringExtra(username)

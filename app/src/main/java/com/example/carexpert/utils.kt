@@ -87,6 +87,8 @@ fun getCovidDataAPI(key: String, _textView: TextView, context: AppCompatActivity
     queue.add(stringRequest)
 }
 
+var items_id : MutableList<Int> = mutableListOf()
+
 fun getProvinceDataAPI(items: MutableList<String>, context: AppCompatActivity) {
     // Instantiate the RequestQueue.
     val queue = Volley.newRequestQueue(context)
@@ -100,6 +102,7 @@ fun getProvinceDataAPI(items: MutableList<String>, context: AppCompatActivity) {
             for (i in 0 until arr.length()) {
                 val update = arr.get(i) as JSONObject
                 items.add(update["name"].toString().capitalizeWords())
+                items_id.add(update["id"].toString().toInt())
             }
         },
         { items += "error" })
@@ -108,30 +111,12 @@ fun getProvinceDataAPI(items: MutableList<String>, context: AppCompatActivity) {
     queue.add(stringRequest)
 }
 
-fun getCityDataAPI(province : String, items: MutableList<String>, context: AppCompatActivity) {
-    // Instantiate the RequestQueue.
-    val url = "https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json"
+var i_global = -1
 
-    // Request a string response from the provided URL.
-    val stringRequest = StringRequest(
-        Request.Method.GET, url,
-        { response ->
-            val arr = JSONTokener(response).nextValue() as JSONArray
-            for (i in 0 until arr.length()) {
-                val update = arr.get(i) as JSONObject
-                if (update["name"].toString().capitalizeWords() == province){
-                    items.add(i.toString())
-                //getCityDataAPI_(items, 11, context)
-                }
-            }
-        },
-        {  })
-}
-
-fun getCityDataAPI_(items: MutableList<String>, index : Int, context: AppCompatActivity) {
+fun getCityDataAPI(items: MutableList<String>, context: AppCompatActivity) {
     // Instantiate the RequestQueue.
     val queue = Volley.newRequestQueue(context)
-    val url = "https://www.emsifa.com/api-wilayah-indonesia/api/regencies/"+index.toString()+".json"
+    val url  = "https://www.emsifa.com/api-wilayah-indonesia/api/regencies/"+items_id[i_global].toString()+".json"
 
     // Request a string response from the provided URL.
     val stringRequest = StringRequest(

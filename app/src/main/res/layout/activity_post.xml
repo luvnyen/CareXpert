@@ -56,7 +56,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
             app:startIconDrawable="@drawable/ic_baseline_location_city_24"
             app:startIconTint="@color/primary">
 
@@ -82,7 +82,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/kotaLayout"
-            app:layout_constraintTop_toBottomOf="@+id/kotaLayout"
+            app:layout_constraintTop_toTopOf="parent"
             app:startIconDrawable="@drawable/ic_baseline_location_on_24"
             app:startIconTint="@color/primary">
 
@@ -100,7 +100,6 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:hint="Post Title"
             android:textColorHint="@color/gray"
             app:boxStrokeColor="@color/primary"
@@ -109,7 +108,7 @@
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
-            app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
+            app:layout_constraintTop_toBottomOf="@+id/kotaLayout"
             app:startIconDrawable="@drawable/ic_baseline_title_24"
             app:startIconTint="@color/primary">
 
