@@ -29,6 +29,16 @@ class BMIActivity : AppCompatActivity() {
 
         val db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
+        val _exploreIcon = findViewById<ConstraintLayout>(R.id.exploreIcon)
+        _exploreIcon.setOnClickListener {
+            startActivity(Intent(this@BMIActivity, ExploreActivity::class.java))
+        }
+
+        val _homeIcon = findViewById<ConstraintLayout>(R.id.profileIcon)
+        _homeIcon.setOnClickListener {
+            startActivity(Intent(this@BMIActivity, HomeActivity::class.java))
+        }
+
         // get user data
         db.collection("tbUser").get()
             .addOnSuccessListener { result ->
@@ -48,8 +58,8 @@ class BMIActivity : AppCompatActivity() {
             startActivity(Intent(this@BMIActivity, ProfileEditActivity::class.java))
         }
 
-        val _btnChat = findViewById<ConstraintLayout>(R.id.btnChat)
-        _btnChat.setOnClickListener {
+        val _btnPosts = findViewById<ConstraintLayout>(R.id.btnChat)
+        _btnPosts.setOnClickListener {
             startActivity(Intent(this@BMIActivity, ProfilePostsActivity::class.java))
         }
 
@@ -126,8 +136,7 @@ class BMIActivity : AppCompatActivity() {
             }
         }
 
-        //Sign Out
-        var sp : SharedPreferences = getSharedPreferences("usernameSP", Context.MODE_PRIVATE)
+        val sp : SharedPreferences = getSharedPreferences("usernameSP", Context.MODE_PRIVATE)
         val _tvSignOut : TextView = findViewById(R.id.tvSignOut)
         _tvSignOut.setOnClickListener {
             username_global = ""

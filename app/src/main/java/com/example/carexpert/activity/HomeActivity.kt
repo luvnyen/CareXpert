@@ -89,67 +89,6 @@ class HomeActivity : AppCompatActivity() {
             readData_Kota(db, _spinner_provinsi.getText().toString(),
                 _spinner_kota.getText().toString())
         })
-
-//        //Filter Spinner 1x
-//        _spinner = findViewById(R.id.spinner1)
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.type,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinner.adapter = adapter
-//        }
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.type,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinner.adapter = adapter
-//        }
-//        _spinner.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View,
-//                position: Int,
-//                id: Long
-//            ) {
-//                parent.getItemAtPosition(position)
-//            }
-//            override fun onNothingSelected(parent: AdapterView<*>?) {}
-//        })
-//
-//        //Filter Spinner 2
-//        _spinner2 = findViewById(R.id.spinner2)
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.type,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinner2.adapter = adapter
-//        }
-//        ArrayAdapter.createFromResource(
-//            this,
-//            R.array.type,
-//            android.R.layout.simple_spinner_item
-//        ).also { adapter ->
-//            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//            _spinner2.adapter = adapter
-//        }
-//        _spinner2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View,
-//                position: Int,
-//                id: Long
-//            ) {
-//                parent.getItemAtPosition(position)
-//            }
-//            override fun onNothingSelected(parent: AdapterView<*>?) {}
-//        })
-
     }
 
     private fun readData_Kota(db: FirebaseFirestore, province : String, city : String){
@@ -186,7 +125,6 @@ class HomeActivity : AppCompatActivity() {
 
                 postAdapter.setOnItemClickCallback(object : PostAdapter.OnItemClickCallback{
                     override fun onItemClicked(data:Post){
-                        //GetData(db, data)
                         val eIntent = Intent(this@HomeActivity, CommentActivity::class.java)
                         setPostOther(data.username, data.date, data.time)
                         startActivity(eIntent)
