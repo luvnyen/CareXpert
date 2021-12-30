@@ -151,7 +151,7 @@ class SignUpActivity : AppCompatActivity() {
 
                             TambahData(db, _nama.text.toString(), _username.text.toString(), _gender.text.toString(), formatedDate, _email.text.toString(), _password.text.toString())
 
-                            startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
+                            //startActivity(Intent(this@SignUpActivity, HomeActivity::class.java))
                         }
                     }
                 }
