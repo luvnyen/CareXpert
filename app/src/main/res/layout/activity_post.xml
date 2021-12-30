@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,164 +7,171 @@
     android:background="@color/white"
     tools:context=".activity.PostActivity">
 
-    <ImageView
-        android:id="@+id/BackButton2"
-        android:layout_width="30dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
-    <TextView
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="New Post"
-        android:textAlignment="center"
-        android:textColor="#005C9A"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/BackButton2"
-        app:layout_constraintTop_toBottomOf="@+id/BackButton2" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        android:id="@+id/cons2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/kotaLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/BackButton2"
+            android:layout_width="30dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:hint="Please select a province first"
-            android:textColorHint="@color/gray"
-            app:boxStrokeColor="@color/primary"
-            app:endIconTint="@color/primary"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
-            app:startIconDrawable="@drawable/ic_baseline_location_city_24"
-            app:startIconTint="@color/primary">
-
-            <AutoCompleteTextView
-                android:id="@+id/spinner_kota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/provinsiLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Province"
-            android:textColorHint="@color/gray"
-            app:boxStrokeColor="@color/primary"
-            app:endIconTint="@color/primary"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/kotaLayout"
             app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/ic_baseline_location_on_24"
-            app:startIconTint="@color/primary">
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
-            <AutoCompleteTextView
-                android:id="@+id/spinner_provinsi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="New Post"
+            android:textAlignment="center"
+            android:textColor="#005C9A"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/BackButton2"
+            app:layout_constraintTop_toBottomOf="@+id/BackButton2" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/titleLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/cons2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Post Title"
-            android:textColorHint="@color/gray"
-            app:boxStrokeColor="@color/primary"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/primary"
-            app:errorEnabled="true"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
-            app:layout_constraintTop_toBottomOf="@+id/kotaLayout"
-            app:startIconDrawable="@drawable/ic_baseline_title_24"
-            app:startIconTint="@color/primary">
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/title_post"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/kotaLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:textColor="@color/black" />
+                android:layout_marginTop="8dp"
+                android:hint="Please select a province first"
+                android:textColorHint="@color/gray"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/provinsiLayout"
+                app:startIconDrawable="@drawable/ic_baseline_location_city_24"
+                app:startIconTint="@color/primary">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_kota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/black" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/postLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="What's on your mind?"
-            android:textColorHint="@color/gray"
-            app:boxStrokeColor="@color/primary"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/primary"
-            app:errorEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/titleLayout"
-            app:layout_constraintTop_toBottomOf="@+id/titleLayout"
-            app:startIconDrawable="@drawable/ic_baseline_description_24"
-            app:startIconTint="@color/primary">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/post"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/provinsiLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:lines="3"
-                android:maxLines="10"
-                android:minLines="3"
-                android:scrollbars="vertical"
-                android:textColor="@color/black" />
+                android:layout_marginTop="8dp"
+                android:hint="Province"
+                android:textColorHint="@color/gray"
+                app:boxStrokeColor="@color/primary"
+                app:endIconTint="@color/primary"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/kotaLayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+                app:startIconTint="@color/primary">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <AutoCompleteTextView
+                    android:id="@+id/spinner_provinsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/BtnPost"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#005C9A"
-            android:text="Post"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/postLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/postLayout"
-            app:layout_constraintTop_toBottomOf="@+id/postLayout" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/titleLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="Post Title"
+                android:textColorHint="@color/gray"
+                app:boxStrokeColor="@color/primary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/primary"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/provinsiLayout"
+                app:layout_constraintTop_toBottomOf="@+id/kotaLayout"
+                app:startIconDrawable="@drawable/ic_baseline_title_24"
+                app:startIconTint="@color/primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/title_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/postLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="What's on your mind?"
+                android:textColorHint="@color/gray"
+                app:boxStrokeColor="@color/primary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/primary"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/titleLayout"
+                app:layout_constraintTop_toBottomOf="@+id/titleLayout"
+                app:startIconDrawable="@drawable/ic_baseline_description_24"
+                app:startIconTint="@color/primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/post"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:maxLines="10"
+                    android:minLines="3"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/BtnPost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#005C9A"
+                android:text="Post"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/postLayout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/postLayout"
+                app:layout_constraintTop_toBottomOf="@+id/postLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
