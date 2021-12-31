@@ -4,7 +4,7 @@ CareXpert is an Android-based health application that provides complete health s
 ## Preview
 
 ### Splash Screen
-<img src="https://user-images.githubusercontent.com/56993480/147816194-d5cd8a84-ec83-4120-a213-c6d5183179c6.jpg" width="300" />
+<img src="https://user-images.githubusercontent.com/56993480/147816194-d5cd8a84-ec83-4120-a213-c6d5183179c6.jpg" width="272" />
 
 ### Login Activity
 <p float="left">
@@ -15,9 +15,9 @@ CareXpert is an Android-based health application that provides complete health s
 
 ### Sign Up Activity
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/56993480/147816517-8502ac27-9368-406a-a27f-d4b65a60f3e2.jpg" width="300" />
-  <img src="https://user-images.githubusercontent.com/56993480/147816529-9df7909c-f7fc-46cd-b3de-e0e1fc59dfed.jpg" width="300" /> 
-  <img src="https://user-images.githubusercontent.com/56993480/147816531-9c4f8ab6-3b36-4c38-be93-8d0621b52753.jpg" width="300" />
+  <img src="https://user-images.githubusercontent.com/56993480/147816517-8502ac27-9368-406a-a27f-d4b65a60f3e2.jpg" width="272" />
+  <img src="https://user-images.githubusercontent.com/56993480/147816529-9df7909c-f7fc-46cd-b3de-e0e1fc59dfed.jpg" width="272" /> 
+  <img src="https://user-images.githubusercontent.com/56993480/147816531-9c4f8ab6-3b36-4c38-be93-8d0621b52753.jpg" width="272" />
 </p>
 
 ### (still on-progress)
