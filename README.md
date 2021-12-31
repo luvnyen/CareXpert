@@ -8,9 +8,9 @@ CareXpert is an Android-based health application that provides complete health s
 
 ### Login Activity
 <p float="left">
-  <img src="https://user-images.githubusercontent.com/56993480/147816268-d759edd3-019d-44ac-9d2a-1e72391467f1.jpg" width="280" />
-  <img src="https://user-images.githubusercontent.com/56993480/147816272-acf360d6-e1fc-4ed7-887b-38f8728324f0.jpg" width="280" /> 
-  <img src="https://user-images.githubusercontent.com/56993480/147816278-c41bedfe-0fce-4d44-b4d7-e50d445ce440.jpg" width="280" />
+  <img src="https://user-images.githubusercontent.com/56993480/147816268-d759edd3-019d-44ac-9d2a-1e72391467f1.jpg" width="270" />
+  <img src="https://user-images.githubusercontent.com/56993480/147816272-acf360d6-e1fc-4ed7-887b-38f8728324f0.jpg" width="270" /> 
+  <img src="https://user-images.githubusercontent.com/56993480/147816278-c41bedfe-0fce-4d44-b4d7-e50d445ce440.jpg" width="270" />
 </p>
 
 ### Sign Up Activity
