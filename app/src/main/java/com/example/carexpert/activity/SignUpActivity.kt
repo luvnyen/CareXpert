@@ -118,12 +118,10 @@ class SignUpActivity : AppCompatActivity() {
                     }
 
                     if (!TextUtils.isEmpty(_username.text)) {
-                        if (!foundUsernameDouble) {
-                            usernameLayout.error = ""
-                        }
                         if (_username.text.toString().contains(" ")) {
                             usernameLayout.error = "Username cannot contain spaces"
-                        } else {
+                        }
+                        if (!foundUsernameDouble && !_username.text.toString().contains(" ")) {
                             usernameLayout.error = ""
                         }
                     }
