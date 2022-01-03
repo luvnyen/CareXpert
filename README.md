@@ -68,6 +68,7 @@ Users can choose one of the entire list of provinces in Indonesia as the locatio
 </p>
 
 ### COVID-19 Cases Data Activity (directed through Explore Activity Menu)
+Data is retrieved using APIs from https://kawalcorona.com/api/ and https://data.covid19.go.id/ (up to date)<br><br>
 <img src="https://user-images.githubusercontent.com/56993480/147853844-807e3e0b-89c0-490b-afcd-b96f92fa948b.jpg" width="272" />
 
 ### Profile Activity Menu – Edit User's Biodata Activity
