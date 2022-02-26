@@ -1,6 +1,12 @@
 # CareXpert
 CareXpert is an Android-based health application that provides complete health solutions and a trusted community to meet the health needs of you and your family. This project is intended for the Android Based Application Programming course final project at Petra Christian University.
 
+## Framework, Language, & Toolkits
+![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white)
+![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?&style=for-the-badge&logo=kotlin&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+![Material Design](https://img.shields.io/badge/material%20design-757575?style=for-the-badge&logo=material%20design&logoColor=white)
+
 ## Preview
 
 ### Splash Screen
